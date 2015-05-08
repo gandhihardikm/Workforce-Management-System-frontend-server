@@ -1,0 +1,97 @@
+<div class="row">
+                        <div class="col-md-12">
+                            <!-- START DEFAULT DATATABLE -->
+                            <div class="panel panel-default">
+                                <div class="panel-heading">                                
+                                    <h3 class="panel-title">Alert Type</h3>
+                                    
+                                    <ul class="panel-controls">
+                                    	<li><button class="btn btn-primary"  data-toggle="modal" data-target="#divEditAlertType" ng-click="addAlertType()"><span class="fa fa-plus"></span> Add New Alert Type</button></li>
+                                    	<!-- 
+                                        <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
+                                        <li><a href="#" class="panel-refresh"><span class="fa fa-refresh"></span></a></li>
+                                        <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>  -->
+                                    </ul>                                
+                                </div>
+                                <div class="panel-body">
+                                    <table id="tblAlertTypeList" class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Alert</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="alerttype in alerttypes">
+                                                <td>{{alerttype.alert_type}}</td>
+                                                <td>
+														<ul class="panel-controls">
+                                        <li><a href="javascript:void();" ng-click="editAlertType(this)" class="panel-edit" data-toggle="modal" data-target="#divEditAlertType" ><span class="fa fa-pencil"></span></a></li>
+										<li><a ng-click="confirmDeleteAlertType(this)" class="mb-control" data-box="#mb-alerttypedelete"><span class="fa fa-times"></span></a></li>
+                                    </ul>
+												</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- END DEFAULT DATATABLE -->
+                        </div>
+                    </div>                                
+                    
+                <!-- PAGE CONTENT WRAPPER -->  
+				<!-- EDIT CLIENT MODAL DIALOG START-->
+					<div class="modal fade" id="divEditAlertType" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		  <div class="modal-dialog" style="width:75%">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title" id="myModalLabel">Alert Type</h4>
+		      </div>
+		      <div class="modal-body" style="height: auto;overflow: auto;">
+		       <form name="frmAlertType" id="frmAlertType" class="form-horizontal" >
+				<div class="row">
+				   <div class="col-md-6">
+				   		<div class="form-group">
+				         <label class="col-md-3 control-label">Alert Type</label>
+				         <div class="col-md-9">
+				            <div class="input-group">
+				               <input type="text" required  name="txtAlertType" id="txtAlertType" ng-model="editAlertTypeObj.alert_type"  class="form-control"/>
+				            </div>
+				            <span class="help-block"></span>
+				         </div>
+				      </div>
+				   </div>
+				   
+				</div>
+				 <div style="margin:20px">
+		       		<input class="btn btn-primary" class="submit" ng-click="saveAlertType()" type="submit" value="Save">
+					<button class="btn" data-dismiss="modal" ng-click="cancelAlertType()">Cancel</button>
+		      	</div>
+				 </form>
+			  </div>
+		     
+		    </div>
+		  </div>
+		</div>
+		
+		
+		 <!-- DHVANI SHAH 21-Apr-2015 DELETE MESSAGE BOX START-->
+        <div class="message-box animated fadeIn" data-sound="alert" id="mb-alerttypedelete">
+            <div class="mb-container">
+                <div class="mb-middle">
+                    <div class="mb-title"><span class="fa fa-times"></span> Delete Alert Type</div>
+                    <div class="mb-content">
+                        <p>Are you sure you want to delete this record?</p>                    
+                        <p>Press No if you want to continue work. Press Yes to delete.</p>
+                    </div>
+                    <div class="mb-footer">
+                        <div class="pull-right">
+                            <a class="btn btn-success btn-lg" ng-click="deleteAlertType(deleteAlertTypeObj.alert_type_id)">Yes</a>
+                            <button id="divCancelAlertTypeDelete" ng-click="cancelDeleteAlertType()" class="btn btn-default btn-lg mb-control-close">No</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- DHVANI SHAH 21-Apr-2015 DELETE MESSAGE BOX END-->

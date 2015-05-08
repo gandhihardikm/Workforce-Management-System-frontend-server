@@ -1,0 +1,116 @@
+<ul class="breadcrumb">
+                    <li><a href="#">Home</a></li>
+                    
+                    <li class="active">Alerts</li>
+                </ul>
+                <!-- END BREADCRUMB -->
+                
+                <!-- PAGE TITLE -->
+               <!--  <div class="page-title">                    
+                    <h2><span class="fa fa-arrow-circle-o-left"></span> Basic Tables</h2>
+                </div>
+                 -->
+                <!-- END PAGE TITLE -->                
+                
+                <!-- PAGE CONTENT WRAPPER -->
+                <div class="page-content-wrap">
+                
+                    
+                    
+                    <div class="row">
+                        <div class="col-md-12">
+                            
+                            <!-- START DATATABLE EXPORT -->
+                            <div class="panel panel-default" ng-init="showAlerts()">
+                                <div class="panel-heading">
+                                  <h3 class="panel-title">Alerts</h3>
+                                      <!--               
+                                    <div class="btn-group pull-right">
+                                        <button class="btn btn-danger dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i> Export Data</button>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="#" onClick ="$('#tbl_alert').tableExport({type:'json',escape:'false'});"><img src="../images/img/icons/json.png" width="24"/> JSON</a></li>
+                                            <li><a href="#" onClick ="$('#tbl_alert').tableExport({type:'json',escape:'false',ignoreColumn:'[2,3]'});"><img src="../images/img/icons/json.png" width="24"/> JSON (ignoreColumn)</a></li>
+                                            <li><a href="#" onClick ="$('#tbl_alert').tableExport({type:'json',escape:'true'});"><img src="../images/img/icons/json.png" width="24"/> JSON (with Escape)</a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="#" onClick ="$('#tbl_alert').tableExport({type:'xml',escape:'false'});"><img src="../images/img/icons/xml.png" width="24"/> XML</a></li>
+                                            <li><a href="#" onClick ="$('#tbl_alert').tableExport({type:'sql'});"><img src="../images/img/icons/sql.png" width="24"/> SQL</a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="#" onClick ="$('#tbl_alert').tableExport({type:'csv',escape:'false'});"><img src="../images/img/icons/csv.png" width="24"/> CSV</a></li>
+                                            <li><a href="#" onClick ="$('#tbl_alert').tableExport({type:'txt',escape:'false'});"><img src="../images/img/icons/txt.png" width="24"/> TXT</a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="#" onClick ="$('#tbl_alert').tableExport({type:'excel',escape:'false'});"><img src="../images/img/icons/xls.png" width="24"/> XLS</a></li>
+                                            <li><a href="#" onClick ="$('#tbl_alert').tableExport({type:'doc',escape:'false'});"><img src="../images/img/icons/word.png" width="24"/> Word</a></li>
+                                            <li><a href="#" onClick ="$('#tbl_alert').tableExport({type:'powerpoint',escape:'false'});"><img src="../images/img/icons/ppt.png" width="24"/> PowerPoint</a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="#" onClick ="$('#tbl_alert').tableExport({type:'png',escape:'false'});"><img src="../images/img/icons/png.png" width="24"/> PNG</a></li>
+                                            <li><a href="#" onClick ="$('#tbl_alert').tableExport({type:'pdf',escape:'false'});"><img src="../images/img/icons/pdf.png" width="24"/> PDF</a></li>
+                                        </ul>
+                                    </div>             -->                        
+                                    
+                                </div>
+                                <div class="panel-body">
+                                    <table id="tbl_alert" class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Alert ID</th>
+                                                <th>Date-Time</th>
+                                                <th>Severity</th>
+                                                <th>Building ID</th>
+                                                <th>Building Name</th>
+                                                <th>Guard ID</th>
+                                                <th>Guard Name</th>
+                                                <th>Guard Comment</th>
+                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody >
+                                            <tr ng-repeat= "alertDisplay in alert">
+										        <td>{{alertDisplay.alertID}}</td>
+                                                <td>{{alertDisplay.dateTime | date: 'yyyy-MM-dd'}}</td>
+                                                <td>{{alertDisplay.severity}}</td>
+                                                <td>{{alertDisplay.buildingID}}</td>
+                                                <td>{{alertDisplay.buildingName}}</td>
+                                                <td>{{alertDisplay.guardID}}</td>
+                                                <td>{{alertDisplay.guardName}}</td>
+                                                <td>{{alertDisplay.comment}}</td>
+											</tr>
+										  <!--  <tr>
+                                                <td>Alert1</a></td>
+                                                <td>April 1, 2015</td>
+                                                <td>Low</td>
+                                                <td>B1</td>
+                                                <td>Admin</td>
+                                                <td>G1</td>
+                                                <td>ABC</td>
+                                                <td>Everything was normal</td>
+                                                
+                                           </tr>
+                                            
+                                             <tr>
+                                                <td>Alert1</a></td>
+                                                <td>April 10, 2015</td>
+                                                <td>High</td>
+                                                <td>B5</td>
+                                                <td>HR</td>
+                                                <td>G2</td>
+                                                <td>XYZ</td>
+                                                <td>Incident found</td>
+                                                
+                                           </tr> -->
+                                            
+                                            
+                                        </tbody>
+                                    </table>                                    
+                                    
+                                </div>
+                            </div>
+                            <!-- END DATATABLE EXPORT -->                            
+                            
+                           
+
+                        </div>
+                    </div>
+
+                </div>         
+                <!-- END PAGE CONTENT WRAPPER -->
+            

@@ -1,0 +1,261 @@
+<div class="row">
+                        <div class="col-md-12">
+                            <!-- START DEFAULT DATATABLE -->
+                            <div class="panel panel-default">
+                                <div class="panel-heading">                                
+                                    <h3 class="panel-title">Guards</h3>
+                                    
+                                    <ul class="panel-controls">
+                                    	<li><button class="btn btn-primary"  data-toggle="modal" data-target="#divEditGuard" ng-click="addGuard()"><span class="fa fa-plus"></span> Add New Guard</button></li>
+                                    	<!-- 
+                                        <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
+                                        <li><a href="#" class="panel-refresh"><span class="fa fa-refresh"></span></a></li>
+                                        <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>  -->
+                                    </ul>                                
+                                </div>
+                                <div class="panel-body">
+                                    <table id="tblGuardList" class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Email</th>
+                                                <th>SSN</th>
+                                                <th>Hours Worked</th>
+                                                <th>Building</th>
+                                                <th>Background Status Check</th>
+                                                
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="guard in guards">
+                                                <td>{{guard.first_name}} {{guard.last_name}}</td>
+                                                <td>{{guard.email_id}}</td>
+                                                <td>{{guard.guard_ssn}}</td>
+                                                <td>{{guard.hours_worked}}</td>
+                                                <td>{{guard.building_id}}</td>
+                                                <td>{{guard.background_status_check}}</td>
+                                                
+                                                <td>
+														<ul class="panel-controls">
+										 <li><a href="javascript:void();" ng-click="viewGuardLocation(this)" class="panel-edit" data-toggle="modal" data-target="#divViewGuardLocation" ><span class="fa fa-map-marker"></span></a></li>
+                                        <li><a href="javascript:void();" ng-click="editGuard(this)" class="panel-edit" data-toggle="modal" data-target="#divEditGuard" ><span class="fa fa-pencil"></span></a></li>
+										<li><a ng-click="confirmDeleteGuard(this)" class="mb-control" data-box="#mb-guarddelete"><span class="fa fa-times"></span></a></li>
+                                    </ul>
+												</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- END DEFAULT DATATABLE -->
+                        </div>
+                    </div>                                
+                <!-- PAGE CONTENT WRAPPER -->  
+				<!-- EDIT GUARD MODAL DIALOG START-->
+					<div class="modal fade" id="divEditGuard" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		  <div class="modal-dialog" style="width:75%">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title" id="myModalLabel">Guard</h4>
+		      </div>
+		      <div class="modal-body" style="height: auto;overflow: auto;">
+		       <form name="frmGuardAddEdit" id="frmGuardAddEdit" class="form-horizontal" action="javascript:alert('Form #frmGuardAddEdit submited');" >
+				<div class="row">
+				   <div class="col-md-6">
+				      <div class="form-group">
+				         <label class="col-md-3 control-label">First Name</label>
+				         <div class="col-md-9">
+				            <div class="input-group">
+				               <input type="text" required  name="txtFirstName" id="txtFirstName" ng-model="editGuardObj.first_name" value="{{editGuardObj.first_name}}"  class="form-control" />
+				            </div>
+				            <span class="help-block"></span>
+				         </div>
+				      </div>
+				      <div class="form-group">
+				         <label class="col-md-3 control-label">Last Name</label>
+				         <div class="col-md-9">
+				            <div class="input-group">
+				               <input type="text" required  name="txtLastName" id="txtLastName" ng-model="editGuardObj.last_name" value="{{editGuardObj.last_name}}" class="form-control" />
+				            </div>
+				            <span class="help-block"></span>
+				         </div>
+				      </div>
+				      <div class="form-group">
+				         <label class="col-md-3 control-label">Address</label>
+				         <div class="col-md-9">
+				            <div class="input-group">
+				               <input type="text" required  name="txtAddress" id="txtAddress" ng-model="editGuardObj.address" value="{{editGuardObj.address}}"  class="form-control"  />
+				            </div>
+				            <span class="help-block"></span>
+				         </div>
+				      </div>
+				      <div class="form-group">
+				         <label class="col-md-3 control-label">City</label>
+				         <div class="col-md-9">
+				            <div class="input-group">
+				               <input type="text" required  name="txtCity" id="txtCity" ng-model="editGuardObj.city" value="{{editGuardObj.city}}"  class="form-control" />
+				            </div>
+				            <span class="help-block"></span>
+				         </div>
+				      </div>
+				      <div class="form-group">
+				         <label class="col-md-3 control-label">State</label>
+				         <div class="col-md-9">
+				            <div class="input-group">
+				              <!--  <input type="text" required  name="txtState" id="txtState" ng-model="editGuardObj.state" value="{{editGuardObj.state}}"  class="form-control" /> -->
+				            	 <select required class="form-control select" name="txtState" id="txtState" value="{{editGuardObj.state}}"  ng-model="editGuardObj.state" >
+                                                <option value="">Select Status</option>
+		                <option value="{{state.name}}" ng-repeat="state in states">{{state.name}}</option>						                
+                </select>
+				            </div>
+				            <span class="help-block"></span>
+				         </div>
+				      </div>
+				       <div class="form-group">
+				         <label class="col-md-3 control-label">Zipcode</label>
+				         <div class="col-md-9">
+				            <div class="input-group">
+				               <input type="text" required ui-mask="99999" name="txtZipcode" id="txtZipcode" ng-model="editGuardObj.zipcode" value="{{editGuardObj.zipcode}}"  class="form-control mask_zipcode" />
+				            </div>
+				            <span class="help-block"></span>
+				         </div>
+				      </div>
+				       <div class="form-group">
+				         <label class="col-md-3 control-label">Phone Number</label>
+				         <div class="col-md-9">
+				            <div class="input-group">
+				               <input type="text" required ui-mask="(999)-999-9999"  name="txtPhoneNumber" id="txtPhoneNumber" ng-model="editGuardObj.phone_number" value="{{editGuardObj.phone_number}}"  class="form-control mask_phone" />
+				            </div>
+				            <span class="help-block"></span>
+				         </div>
+				      </div>
+				     
+				   </div>
+				   <div class="col-md-6">
+				   <div class="form-group">
+				         <label class="col-md-3 control-label">SSN</label>
+				         <div class="col-md-9">
+				            <div class="input-group">
+				               <input type="text" required ui-mask="999-99-9999" name="txtSSN" id="txtSSN" ng-model="editGuardObj.guard_ssn" value="{{editGuardObj.guard_ssn}}" class="form-control mask_ssn" />
+				            </div>
+				            <span class="help-block"></span>
+				         </div>
+				      </div>
+				      <div class="form-group">
+				         <label class="col-md-3 control-label">Email</label>
+				         <div class="col-md-9">
+				            <div class="input-group">
+				               <input type="text" required  name="txtGuardEmail" id="txtGuardEmail" ng-model="editGuardObj.email_id"  class="form-control" />
+				            </div>
+				            <span class="help-block"></span>
+				         </div>
+				      </div>
+				       <div class="form-group">
+				         <label class="col-md-3 control-label">Password</label>
+				         <div class="col-md-9">
+				            <div class="input-group">
+				               <input type="password" required  name="txtPassword" id="txtPassword" ng-model="editGuardObj.password" value="{{editGuardObj.password}}" class="form-control"/>
+				            </div>
+				            <span class="help-block"></span>
+				         </div>
+				      </div>
+				    <div class="form-group">
+				         <label class="col-md-3 control-label">Confirm Password</label>
+				         <div class="col-md-9">
+				            <div class="input-group">
+				               <input type="password" required name="txtConfirmPassword" id="txtConfirmPassword" ng-model="editGuardObj.password" pw-check="txtPassword" class="form-control"/>
+				            </div>
+				            <span class="help-block"></span>
+				         </div>
+				      </div>
+				       
+				      <div class="form-group">
+				         <label class="col-md-3 control-label">Background Status Check</label>
+				         <div class="col-md-9">
+				            <div class="input-group">
+				               
+				            	<select required class="form-control select" id="txtBackgroundStatusCheck" value="{{editGuardObj.background_status_check}}"  ng-model="txtBackgroundStatusCheck" >
+                                                        <option value="">Select Status</option>
+										                <option value="true">Completed</option>
+										                <option value="false">Pending</option>
+                                                    </select>
+				            </div>
+				            <span class="help-block"></span>
+				         </div>
+				      </div>
+				      
+				   </div>
+				</div>
+				 <div style="margin:20px">
+		       		<button class="btn btn-primary" ng-click="saveGuard()" value="Save" ng-disabled="frmGuardAddEdit.txtFirstName.$dirty && frmGuardAddEdit.txtFirstName.$invalid || 
+								frmGuardAddEdit.txtLastName.$dirty && frmGuardAddEdit.txtLastName.$invalid|| 
+								frmGuardAddEdit.txtAddress.$dirty && frmGuardAddEdit.txtAddress.$invalid|| 
+								frmGuardAddEdit.txtCity.$dirty && frmGuardAddEdit.txtCity.$invalid|| 
+								frmGuardAddEdit.txtState.$dirty && frmGuardAddEdit.txtState.$invalid|| 
+								frmGuardAddEdit.txtZipcode.$dirty && frmGuardAddEdit.txtZipcode.$invalid|| 
+								frmGuardAddEdit.txtPhoneNumber.$dirty && frmGuardAddEdit.txtPhoneNumber.$invalid|| 
+								frmGuardAddEdit.txtSSN.$dirty && frmGuardAddEdit.txtSSN.$invalid|| 
+								frmGuardAddEdit.txtPassword.$dirty && frmGuardAddEdit.txtPassword.$invalid|| 
+								frmGuardAddEdit.txtConfirmPassword.$dirty && frmGuardAddEdit.txtConfirmPassword.$invalid|| 
+								frmGuardAddEdit.txtGuardEmail.$dirty && frmGuardAddEdit.txtLastName.$invalid|| 
+								frmGuardAddEdit.txtBackgroundStatusCheck.$dirty && frmGuardAddEdit.txtBackgroundStatusCheck.$invalid">Save</button>
+					<button class="btn" data-dismiss="modal" ng-click="cancelGuard()" >Cancel</button>
+		      	</div>
+				 
+				 </form>
+			  </div>
+		     
+		    </div>
+		  </div>
+		</div>
+		
+		<!-- VIEW GUARD LOCATION MODAL DIALOG START-->
+					<div class="modal fade" id="divViewGuardLocation" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		  <div class="modal-dialog" style="width:75%">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title" id="myModalLabel">Guard</h4>
+		      </div>
+		      <div class="modal-body" style="height: auto;overflow: auto;">
+		       
+		        <div class="panel-body panel-body-map">
+                        <div id="map-canvas" style="  width: 100%;height: 300px; position: relative; overflow: hidden;  transform: translateZ(0px);  background-color: rgb(229, 227, 223);"></div>
+                 </div>
+			  </div>
+		     
+		    </div>
+		  </div>
+		</div>
+		
+		
+		 <!-- DHVANI SHAH 21-Apr-2015 DELETE MESSAGE BOX START-->
+        <div class="message-box animated fadeIn" data-sound="alert" id="mb-Guarddelete">
+            <div class="mb-container">
+                <div class="mb-middle">
+                    <div class="mb-title"><span class="fa fa-times"></span> Delete Guard</div>
+                    <div class="mb-content">
+                        <p>Are you sure you want to delete this record?</p>                    
+                        <p>Press No if youwant to continue work. Press Yes to delete.</p>
+                    </div>
+                    <div class="mb-footer">
+                        <div class="pull-right">
+                             <a class="btn btn-success btn-lg" ng-click="deleteGuard(deleteGuardObj.guard_ssn)">Yes</a>
+                            <button id="divCancelGuardDelete" ng-click="cancelDeleteGuard()" class="btn btn-default btn-lg mb-control-close">No</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- DHVANI SHAH 21-Apr-2015 DELETE MESSAGE BOX END-->
+      
+      
+      <style>
+      html, body, #map-canvas {
+        height: 100%;
+        margin: 0px;
+        padding: 0px
+      }
+    </style>

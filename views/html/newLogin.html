@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="../../node_modules/angular/angular.js"></script>
+
+<link rel='stylesheet' href="../../node_modules/bootstrap/dist/css/bootstrap.css"/>
+<link rel='stylesheet' href="../../node_modules/bootstrap/dist/css/bootstrap.min.css"/>
+
+<script src="../controllers/angular_controller/js/loginjs.js"></script>
+<script src="../bower_components/angular-cookies/angular-cookies.js"></script>
+<meta charset="UTF-8">
+<title>Workforce Management System</title>
+</head>
+<body style='background: url("../views/images/workforce_optimization_management.jpg") no-repeat scroll center center / 100% 275% rgba(0, 0, 0, 0);'height="100" width = "100">
+
+	
+ <div class="container" ng-app="myApp" ng-controller="loginController">    
+        <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
+            <div class="panel panel-info" style="border-color:rgb(29,42,76)" >
+                    <div class="panel-heading" style="background-color:rgb(29,42,76);color:#d9edf7">
+                        <div class="panel-title">Sign In</div>
+                       <!--   <div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="#">Contact Us</a></div> -->
+                    </div>     
+
+                    <div style="padding-top:30px" class="panel-body" >
+
+                        <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+                            
+                        <form id="loginform" method="post" class="form-horizontal" role="form">
+                                    
+                            <div style="margin-bottom: 25px" class="input-group">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                        <input ng-model="username" id="login-username" type="text" class="form-control" name="username" value="" placeholder="username or email">                                        
+                                    </div>
+                                
+                            <div style="margin-bottom: 25px" class="input-group">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                                        <input ng-model="password" id="login-password" type="password" class="form-control" name="password" placeholder="password">
+                                    </div>
+                                    
+
+                                
+                           
+                                <div style="margin-top:10px" class="form-group">
+                                    <div class="col-sm-12 controls">
+                                      <button id="btn-login" class="btn btn-success" ng-click="login()">Login</button>
+                                    </div>
+                                </div>
+                            </form>     
+
+
+
+                        </div>                     
+                    </div>  
+        </div>
+    </div>
+
+</body>
+
+</html>

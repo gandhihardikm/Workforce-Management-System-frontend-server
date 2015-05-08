@@ -1,0 +1,101 @@
+<!-- START BREADCRUMB -->
+ 
+    
+                <ul class="breadcrumb">
+                    <li><a href="#">Home</a></li>
+                    
+                    <li class="active">CheckPoints</li>
+                </ul>
+                <!-- END BREADCRUMB -->
+                
+                <!-- PAGE TITLE -->
+               <!--  <div class="page-title">                    
+                    <h2><span class="fa fa-arrow-circle-o-left"></span> Basic Tables</h2>
+                </div>
+                 -->
+                <!-- END PAGE TITLE -->                
+                
+                <!-- PAGE CONTENT WRAPPER -->
+                <div class="page-content-wrap" ng-init = "checkpoint()">
+                
+                    
+                    
+                    <div class="row">
+                        <div class="col-md-12">
+                            
+                            <!-- START DATATABLE EXPORT -->
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <div class="page-title">                    
+                            <h2><span class="fa fa-map-marker"></span> CheckPoints</h2>
+                        </div> 
+                                                    
+                                                                      
+                                    
+                                </div>
+                                <div class="panel-body">
+                                    <table id="tbl_building" class="table datatable">
+                                        <thead>
+                                            <tr>
+                                                <th>Building Name</th>
+                                                <th>Building Address</th>
+                                                <th>CheckPoint(s)</th>
+                                                
+                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody ng-repeat = "building in buildinglist" >
+                                           
+										
+											<tr>
+											
+											<td>{{building.building_name}}</td>
+											<td>{{building.building_address}}</td>
+											<td> 
+												<ul>
+												<li ng-repeat="checkpoint in building.checkpointlist">
+													{{checkpoint.checkpoint_name}}
+												</li>
+												<li><a href="javascript:void();" ng-click="viewCheckpoints(this)" class="panel-edit" data-toggle="modal" data-target="#divViewCheckpoints" ><span class="fa fa-map-marker"></span></a></li>
+												</ul>
+												</td>
+											
+											
+											</tr>
+                                           
+											
+                                            
+                                            
+                                        </tbody>
+                                    </table>                                    
+                                    
+                                </div>
+                            </div>
+                            <!-- END DATATABLE EXPORT -->                            
+                            
+                           
+                        </div>
+                    </div>
+                </div>         
+                <!-- END PAGE CONTENT WRAPPER -->
+            
+        <!-- END PAGE CONTAINER -->   
+        
+        <!-- VIEW GUARD LOCATION MODAL DIALOG START-->
+					<div class="modal fade" id="divViewCheckpoints" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		  <div class="modal-dialog" style="width:75%">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title" id="myModalLabel">Guard</h4>
+		      </div>
+		      <div class="modal-body" style="height: auto;overflow: auto;">
+		       
+		        <div class="panel-body panel-body-map">
+                        <div id="map-canvas" style="width: 900px;height: 300px; position: relative;   background-color: rgb(229, 227, 223);"></div>
+                 </div>
+			  </div>
+		     
+		    </div>
+		  </div>
+		</div>

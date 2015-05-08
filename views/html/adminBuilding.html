@@ -1,0 +1,324 @@
+<div class="row">
+                        <div class="col-md-12">
+                            <!-- START DEFAULT DATATABLE -->
+                            <div class="panel panel-default">
+                                <div class="panel-heading">                                
+                                    <h3 class="panel-title">Buildings</h3>
+                                    
+                                    <ul class="panel-controls">
+                                    	<li><button class="btn btn-primary" ng-click="viewCheckClient()"  data-toggle="modal" data-target="#divPromptClientSSN"><span class="fa fa-plus"></span> Add New Building</button></li>
+                                    </ul>                                
+                                </div>
+                                <div class="panel-body">
+                                    <table id="tblBuildingList" class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Building Name</th>
+                                                 <th>Building No</th>
+                                                <th>Address</th>
+                                                <th>Zip Code</th>
+                                                <th>Release Date</th>
+                                                <th>Service Fee</th>
+                                                <th>Owner</th>
+                                                <th>Email</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="building in buildings">
+                                                <td>{{building.buildingName}}</td>
+                                                 <td>{{building.buildingID}}</td>
+                                                <td>{{building.buildingAddress}}</td>
+                                                <td>{{building.buildingZipcode}}</td>
+                                                <td>{{building.buildingReleaseDate| date:'mm/dd/yyyy'}}</td>
+                                                <td>{{building.serviceFee}}</td>
+                                                <td>{{building.personName}}</td>
+                                                <td>{{building.emailID}}</td>
+                                                <td>
+														<ul class="panel-controls">
+                                        <li><a href="javascript:void();" ng-click="assignGuard(this)" class="panel-edit" data-toggle="modal" data-target="#divAssignGuard" ><span class="fa fa-user"></span></a></li>
+                                        <li><a href="javascript:void();" ng-click="editBuilding(this)" class="panel-edit" data-toggle="modal" data-target="#divEditBuilding" ><span class="fa fa-pencil"></span></a></li>
+										<li><a ng-click="confirmDeleteBuilding(this)" class="mb-control" data-box="#mb-Buildingdelete"><span class="fa fa-times"></span></a></li>
+                                    </ul>
+												</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- END DEFAULT DATATABLE -->
+                        </div>
+                    </div>                                
+                    
+                <!-- PAGE CONTENT WRAPPER -->  
+				<!-- EDIT Building MODAL DIALOG START-->
+					<div class="modal fade" id="divEditBuilding" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		  <div class="modal-dialog" style="width:75%">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title" id="myModalLabel">Building</h4>
+		      </div>
+		      <div class="modal-body" style="height: auto;overflow: auto;">
+		       <form name="frmBuildingAddEdit" id="frmBuildingAddEdit" class="form-horizontal" >
+				<div class="row">
+				   <div class="col-md-12">
+				   		<div class="form-group">
+				         <label class="col-md-3 control-label">Name</label>
+				         <div class="col-md-9">
+				            <div class="input-group">
+				               <input type="text" required  name="txtName" id="txtName" ng-model="editBuildingObj.buildingName" value={{editBuildingObj.buildingName}}"  class="form-control"/>
+				            </div>
+				            <span class="help-block"></span>
+				         </div>
+				      </div>
+				      <div class="form-group">
+				         <label class="col-md-3 control-label">Address</label>
+				         <div class="col-md-9">
+				            <div class="input-group">
+				               <input type="text" required  name="txtAddress" id="txtAddress" ng-model="editBuildingObj.buildingAddress" value="{{editBuildingObj.buildingAddress}}"  class="form-control"/>
+				            </div>
+				            <span class="help-block"></span>
+				         </div>
+				      </div>
+				      <div class="form-group">
+				         <label class="col-md-3 control-label">Zipcode</label>
+				         <div class="col-md-9">
+				            <div class="input-group">
+				               <input type="text" required ui-mask="99999" name="txtZipcode" id="txtZipcode" ng-model="editBuildingObj.buildingZipcode" value="{{editBuildingObj.buildingZipcode}}" class="form-control"/>
+				            </div>
+				            <span class="help-block"></span>
+				         </div>
+				      </div>
+				      <div class="form-group">
+				         <label class="col-md-3 control-label">Release Date</label>
+				         <div class="col-md-9">
+				            <div class="input-group">
+				               <input type="date" required  name="txtReleaseDate" id="txtReleaseDate" ng-model="editBuildingObj.buildingReleaseDate" value="{{editBuildingObj.buildingReleaseDate}}"  class="form-control" />
+				            </div>
+				            <span class="help-block"></span>
+				         </div>
+				      </div>
+				      <div class="form-group">
+				         <label class="col-md-3 control-label">Service Fee</label>
+				         <div class="col-md-9">
+				            <div class="input-group">
+				               <input type="text" required  name="txtServiceFee" id="txtServiceFee" ng-model="editBuildingObj.serviceFee" value="{{editBuildingObj.serviceFee}}"  class="form-control"/>
+				            </div>
+				            <span class="help-block"></span>
+				         </div>
+				      </div>
+				      <div class="form-group">
+				         <label class="col-md-3 control-label">Owner</label>
+				         <div class="col-md-9">
+				            <div class="input-group">
+				               <input type="text" readonly  name="txtPersonName" id="txtPersonName" ng-model="editBuildingObj.personName" value="{{editBuildingObj.personName}}"  class="form-control"/>
+				            </div>
+				            <span class="help-block"></span>
+				         </div>
+				      </div>
+				       <div class="form-group">
+				         <label class="col-md-3 control-label">Owner Email</label>
+				         <div class="col-md-9">
+				            <div class="input-group">
+				               <input type="text" readonly  name="txtEmailID" id="txtEmailID" ng-model="editBuildingObj.emailID" value="{{editBuildingObj.emailID}}"  class="form-control"/>
+				            </div>
+				            <span class="help-block"></span>
+				         </div>
+				      </div>
+				      <div class="form-group">
+				         <label class="col-md-3 control-label">Owner Phone Number</label>
+				         <div class="col-md-9">
+				            <div class="input-group">
+				               <input type="text" readonly  name="txtPhoneNumber" id="txtPhoneNumber" ng-model="editBuildingObj.phoneNumber" value="{{editBuildingObj.phoneNumber}}"  class="form-control"/>
+				            </div>
+				            <span class="help-block"></span>
+				         </div>
+				      </div>
+				      
+				   </div>
+				</div>
+				 <div style="margin:20px">
+		       		<input class="btn btn-primary" class="submit" ng-click="saveBuilding()" type="submit" value="Save">
+					<button class="btn" data-dismiss="modal" ng-click="cancelBuilding()">Cancel</button>
+		      	</div>
+				 
+				 </form>
+			  </div>
+		     
+		    </div>
+		  </div>
+		</div>
+		
+		<!-- ASSIGN GUARD MODAL DIALOG START-->
+		<div class="modal fade" id="divAssignGuard" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		  <div class="modal-dialog" style="width:75%">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title" id="myModalLabel">Assign Guards</h4>
+		      </div>
+		      <div class="modal-body" style="height: auto;overflow: auto;">
+		       <form name="frmAssignGuard" id="frmAssignGuard" class="form-horizontal" >
+		       <div style="margin-bottom:1%; text-align:right"><button class="btn btn-primary" ng-click="addGuard()"><i class="fa fa-plus"></i></button></div>
+				
+				<div id="content">
+					  <div ng-repeat="shiftguard in editBuildingObj.shiftguards" class="row">
+					   <div class="col-md-11">
+					   	<div class="row" style="padding:10px;">
+					   	 <div class="col-md-12">
+					      <div class="form-group">
+					         <label class="col-md-1 control-label">Guard</label>
+					         <div class="col-md-2">
+					            <div class="input-group">
+					             <input readonly type="text" required ng-model="shiftguard.guard_ssn" value={{shiftguard.guard_ssn}}  class="form-control"/>
+					              <!-- <select required ng-model="shiftguard.guard_name" value={{shiftguard.guard_ssn}}  name="selGuard[]" id="selGuard" class="form-control"/>
+					               	<option ng-repeat="singleguard in allguards" value="{{singleguard.guard_ssn}}">{{singleguard.first_name}}{{singleguard.last_name}}</option>
+					               </select>  --> 
+					            </div>
+					         </div>
+					         
+					         <label class="col-md-1 control-label">Shift</label>
+					         <div class="col-md-2">
+					            <div class="input-group">
+					               <select readonly required  name="selShift[]" id="selShift" class="form-control" ng-model="shiftguard.shift_id" value={{shiftguard.shift_id}}/>
+					               	<option ng-repeat="shft in shifts" ng-if="shiftguard.shift_id == shft.shift_id" selected="selected" value="{{shft.shift_id}}">{{shft.shift_type}}</option>
+					               	<option ng-repeat="shft in shifts" ng-if="shiftguard.shift_id != shft.shift_id"  value="{{shft.shift_id}}">{{shft.shift_type}}</option>
+					               </select>
+					            </div>
+					         </div>
+					         
+					         <label class="col-md-1 control-label">From</label>
+					         <div class="col-md-2">
+					            <div class="input-group">
+					              <input readonly type="date" name="txtDateStart[]" required class="form-control" ng-model="shiftguard.shift_from_date" value="{{shiftguard.shift_from_date}}" />
+					            </div>
+					         </div>
+					         <label class="col-md-1 control-label">To</label>
+					         <div class="col-md-2">
+					            <div class="input-group">
+					              <input readonly type="date" name="txtDateEnd[]" required class="form-control" ng-model="shiftguard.shift_to_date" value="{{shiftguard.shift_to_date}}" />
+					            </div>
+					         </div>
+					      </div>
+					   </div>
+					  </div>					  
+					  </div>
+				</div>
+				<div ng-repeat="shiftguard in editBuildingObj.tempshiftguards" class="row">
+					   <div class="col-md-11">
+					   	<div class="row" style="padding:10px;">
+					   	 <div class="col-md-12">
+					      <div class="form-group">
+					         <label class="col-md-1 control-label">Guard</label>
+					         <div class="col-md-2">
+					            <div class="input-group">
+					             <input type="text" required ng-model="shiftguard.guard_ssn" value={{shiftguard.guard_ssn}}  class="form-control"/>
+					              <!-- <select required ng-model="shiftguard.guard_name" value={{shiftguard.guard_ssn}}  name="selGuard[]" id="selGuard" class="form-control"/>
+					               	<option ng-repeat="singleguard in allguards" value="{{singleguard.guard_ssn}}">{{singleguard.first_name}}{{singleguard.last_name}}</option>
+					               </select>  --> 
+					            </div>
+					         </div>
+					         
+					         <label class="col-md-1 control-label">Shift</label>
+					         <div class="col-md-2">
+					            <div class="input-group">
+					               <select required  name="selShift[]" id="selShift" class="form-control" ng-model="shiftguard.shift_id" value={{shiftguard.shift_id}}/>
+					               	<option ng-repeat="shft in shifts" ng-if="shiftguard.shift_id == shft.shift_id" selected="selected" value="{{shft.shift_id}}">{{shft.shift_type}}</option>
+					               	<option ng-repeat="shft in shifts" ng-if="shiftguard.shift_id != shft.shift_id"  value="{{shft.shift_id}}">{{shft.shift_type}}</option>
+					               </select>
+					            </div>
+					         </div>
+					         
+					         <label class="col-md-1 control-label">From</label>
+					         <div class="col-md-2">
+					            <div class="input-group">
+					              <input type="date" name="txtDateStart[]" required class="form-control" ng-model="shiftguard.shift_from_date" value="{{shiftguard.shift_from_date}}" />
+					            </div>
+					         </div>
+					         <label class="col-md-1 control-label">To</label>
+					         <div class="col-md-2">
+					            <div class="input-group">
+					              <input type="date" name="txtDateEnd[]" required class="form-control" ng-model="shiftguard.shift_to_date" value="{{shiftguard.shift_to_date}}" />
+					            </div>
+					         </div>
+					      </div>
+					   </div>
+					  </div>					  
+					  </div>
+					  <div class="col-md-1"><button  ng-click="cancelGuard(this)" class="btn btn-primary"><i class="fa fa-times"></i></button></div>
+				</div>
+				</div>
+				 <div style="margin:20px">
+		       		<input class="btn btn-primary" class="submit" ng-click="saveBuildingShift()" type="submit" value="Save">
+					<button class="btn" data-dismiss="modal" ng-click="cancelBuildingShift()">Cancel</button>
+		      	</div>
+				 
+				 </form>
+			  </div>
+		     
+		    </div>
+		  </div>
+		</div>
+		
+		
+		
+		 <!-- DHVANI SHAH 21-Apr-2015 DELETE MESSAGE BOX START-->
+        <div class="message-box animated fadeIn" data-sound="alert" id="mb-Buildingdelete">
+            <div class="mb-container">
+                <div class="mb-middle">
+                    <div class="mb-title"><span class="fa fa-times"></span> Delete Building</div>
+                    <div class="mb-content">
+                        <p>Are you sure you want to delete this record?</p>                    
+                        <p>Press No if youwant to continue work. Press Yes to delete.</p>
+                    </div>
+                    <div class="mb-footer">
+                        <div class="pull-right">
+                             <a class="btn btn-success btn-lg" ng-click="deleteBuilding(deleteBuildingObj.buildingID)">Yes</a>
+                            <button id="divCancelBuildingDelete" ng-click="cancelDeleteBuilding()" class="btn btn-default btn-lg mb-control-close">No</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- DHVANI SHAH 21-Apr-2015 DELETE MESSAGE BOX END-->
+        
+        
+        <!-- PROMPT CLIENT SSN BEFORE ADDING BUILDING START -->
+        	<div class="modal fade" id="divPromptClientSSN" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal-dialog" style="width:75%">
+<div class="modal-content">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <h4 class="modal-title" id="myModalLabel">Client</h4>
+  </div>
+  <div class="modal-body" style="height: auto;overflow: auto;">
+     <form name="frmCheckClientSSN" id="frmCheckClientSSN" class="form-horizontal" >
+     <div class="alert alert-danger" id="errMsg" style="display:none" role="alert"></div>
+<div class="row">
+   <div class="col-md-6">
+   		<div class="form-group">
+         <label class="col-md-3 control-label">Client SSN</label>
+         <div class="col-md-9">
+            <div class="input-group">
+               <input type="text" ui-mask="999-99-9999"  name="txtClientSSN" id="txtClientSSN" ng-model="editBuildingObj.person_ssn" value="{{editBuildingObj.person_ssn}}"  class="form-control"/>
+            </div>
+            <span class="help-block"></span>
+         </div>
+      </div>
+   </div>
+   </div>
+</div>
+ <div style="margin:20px">
+       		<input class="btn btn-primary" class="submit" ng-click="checkPersonSSN()" type="button" value="Verify"/>
+
+			<button class="btn" data-dismiss="modal" ng-click="cancelCheckPersonSSN()">Cancel</button>
+      	</div>
+		 
+		 </form>
+	  </div>
+     
+    </div>
+  </div>
+</div>
+        <!-- PROMPT CLIENT SSN BEFORE ADDING BUILDING END -->

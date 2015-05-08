@@ -1,0 +1,59 @@
+<!-- START BREADCRUMB -->
+                <ul class="breadcrumb push-down-0">
+                    <li><a href="#">Home</a></li>
+                    <li class="active">Alerts</li>                   
+                    
+                </ul>
+                <!-- END BREADCRUMB -->                
+                                
+                <!-- START CONTENT FRAME -->
+                <div class="content-frame">                                    
+                    <!-- START CONTENT FRAME TOP -->
+                    <div class="content-frame-top">                        
+                        <div class="page-title">                    
+                            <h2><span class="fa fa-exclamation-triangle"></span> Alerts</h2>
+                        </div>                          
+                    </div>
+                    <!-- END CONTENT FRAME TOP -->
+                    
+                    
+                
+                    <!-- START CONTENT FRAME BODY -->
+                    <div class="content-frame-body content-frame-body-left">
+                        
+                        <div class="messages messages-img" ng-init= "showAlertsOnDashboard()">
+                            <div class="item in item-visible" ng-repeat = "dailyAlerts in dailyAlertInfo" for {{dailyAlerts}}>
+                                <div class="image">
+                                    <button type="button" class="btn btn-danger popover-dismiss" title={{dailyAlerts.guardName}} data-content=CheckPoint:{{dailyAlerts.guardCheckpointName}}>Guard SSN: {{dailyAlerts.guardID}}</button>
+                                </div>
+                                <div class="text">
+                                    <div class="heading">
+                                        <h6>Building Name: {{dailyAlerts.buildingName}}      ({{dailyAlerts.buildingAddress}})</h6>
+                                        <span class="date">{{dailyAlerts.recordDate| date:'yyyy-MM-dd'}} : {{dailyAlerts.recordTime}}</span>
+                                    </div>
+                                    <b>Severity: </b>{{dailyAlerts.severity}}<br>
+                                  {{dailyAlerts.guardComments}}
+                                </div>
+                            </div>
+                            
+                            <!-- <div class="item in">
+                                <div class="image">
+                                    <button type="button" class="btn btn-danger popover-dismiss" title="Guard XYZ" data-content="CheckPoint: C2">Guard ID</button>
+                                </div>
+                                <div class="text">
+                                    <div class="heading">
+                                        <h6>Building: 12-345-6789      (Building Name)</h6>
+                                        <span class="date">08:33</span>
+                                    </div>
+                                    Severity: High<br>
+                                    Guards comments
+                                </div>
+                            </div>  -->
+                           
+                        </div>                        
+                        
+                        
+                        
+                    </div>
+                    <!-- END CONTENT FRAME BODY -->      
+                </div>

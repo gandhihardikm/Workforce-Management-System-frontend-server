@@ -1,0 +1,132 @@
+<ul class="breadcrumb">
+                    <li><a href="#">Home</a></li>
+                    
+                    <li class="active">Payement</li>
+                </ul>
+                <!-- END BREADCRUMB -->
+                
+                <!-- PAGE TITLE -->
+               <!--  <div class="page-title">                    
+                    <h2><span class="fa fa-arrow-circle-o-left"></span> Basic Tables</h2>
+                </div>
+                 -->
+                <!-- END PAGE TITLE -->                
+                
+                <!-- PAGE CONTENT WRAPPER -->
+                <div class="page-content-wrap">
+                
+                    
+                    
+                    <div class="row" ng-controller = "PayementController">
+                       <div class="col-md-12">
+                            
+                            <form id = "frmPayement" novalidate class="form-horizontal">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title"><strong>Payement</h3>
+                                    
+                                </div>
+                                <div class="panel-body">
+                                    
+                                </div>
+                                <div class="panel-body">                                                                        
+                                    
+                                    <div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label">Name on Card</label>
+                                        <div class="col-md-6 col-xs-12">                                            
+                                            <div class="input-group">
+                                                
+                                                <input type="text" ng-model = "payementName"   maxlength = "19" placeholder="Enter name as on Card" class="form-control" required/>
+                                            </div>                                            
+                                            
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">                                        
+                                        <label class="col-md-3 col-xs-12 control-label">Card Number</label>
+                                        <div class="col-md-6 col-xs-12">
+                                            <div class="input-group">
+                                                
+                                                <input type="text" id = "payementNumber" ng-model = "payementNumber" class="form-control mask_card" required ui-mask="9999-9999-9999-9999"/>
+                                            </div>            
+                                            
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">                                        
+                                                <label class="col-md-3 col-xs-12 control-label">Expiration Date</label>
+                                                <div class="col-md-2">
+                                                    <select class="form-control select" id="payementExpiryMonth" value="{{payementExpiryMonth}}"  ng-model="payementExpiryMonth" required>
+                                                        <option value="">Select Month</option>
+										                <option value="01">Feb (02)</option>
+										                <option value="02">Feb (02)</option>
+										                <option value="03">Mar (03)</option>
+										                <option value="04">Apr (04)</option>
+										                <option value="05">May (05)</option>
+										                <option value="06">June (06)</option>
+										                <option value="07">July (07)</option>
+										                <option value="08">Aug (08)</option>
+										                <option value="09">Sep (09)</option>
+										                <option value="10">Oct (10)</option>
+										                <option value="11">Nov (11)</option>
+										                <option value="12">Dec (12)</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <select class="form-control select" id = "payementExpiryYear" value="{{payementExpiryYear}}" ng-model="payementExpiryYear" required>
+                                                        <option value="">Select Year</option>
+                                                        <option value="15">2015</option>
+										                <option value="16">2016</option>
+										                <option value="17">2017</option>
+										                <option value="18">2018</option>
+										                <option value="19">2019</option>
+										                <option value="20">2020</option>
+										                <option value="21">2021</option>
+										                <option value="22">2022</option>
+										                <option value="23">2023</option>
+                                                    </select>
+                                                </div>
+                                                
+                                                </div>                                                
+                                            </div>
+                                    
+                                    <div class="form-group">                                        
+                                        <label class="col-md-3 col-xs-12 control-label">CVV Number</label>
+                                        <div class="col-md-6 col-xs-12">
+                                            <div class="input-group">
+                                                
+                                                <input type="password" id = "payementCVV" ng-model="payementCVV" minlength="3" maxlength = "3" class="form-control"  required ui-mask="999"/>
+                                            </div>            
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">                                        
+                                        <label class="col-md-3 col-xs-12 control-label">Amount ($)</label>
+                                        <div class="col-md-6 col-xs-12">
+                                            <div class="input-group">
+                                                
+                                                <input type="text" id = "payementAmount" ng-model = "payementAmount" placeholder="Enter Amount" class="form-control" required/>
+                                            </div>            
+                                            
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                    </div>
+                                </div>
+                                <div class="panel-footer">
+                                                                 
+                                    <button ng-click = "submit()" class="btn btn-default" ng-disabled="frmPayement.payementName.$dirty && frmPayement.payementName.$invalid ||
+                                    frmPayement.payementNumber.$dirty && frmPayement.payementNumber.$invalid ||
+                                    frmPayement.payementExpiryMonth.$dirty && frmPayement.payementExpiryMonth.$invalid ||
+                                    frmPayement.payementExpiryYear.$dirty && frmPayement.payementExpiryYear.$invalid ||
+                                    frmPayement.payementCVV.$dirty && frmPayement.payementCVV.$invalid || 
+                                    frmPayement.payementAmount.$dirty && frmPayement.payementAmount.$invalid">Pay ${{payementAmount}}</button>
+                                </div>
+                            </div>
+                            </form>
+                            
+                        </div>
+                    </div>
+                </div>         
+                <!-- END PAGE CONTENT WRAPPER -->

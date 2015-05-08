@@ -1,0 +1,120 @@
+<ul class="breadcrumb">
+                    <li><a href="#">Home</a></li>
+                    
+                    <li class="active">Billing Details</li>
+                </ul>
+                <!-- END BREADCRUMB -->
+                
+                <!-- PAGE TITLE -->
+               <!--  <div class="page-title">                    
+                    <h2><span class="fa fa-arrow-circle-o-left"></span> Basic Tables</h2>
+                </div>
+                 -->
+                <!-- END PAGE TITLE -->                
+                
+                <!-- PAGE CONTENT WRAPPER -->
+                <div class="page-content-wrap">
+                
+                    
+                    
+                    <div class="row" ng-init="showBills()">
+                        <div class="col-md-12">
+                            
+                            <!-- START DATATABLE EXPORT -->
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                  <h3 class="panel-title">Billing Details</h3>
+                                    <!--                 
+                                    <div class="btn-group pull-right">
+                                        <button class="btn btn-danger dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i> Export Data</button>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="#" onClick ="$('#tbl_billing').tableExport({type:'json',escape:'false'});"><img src="../images/img/icons/json.png" width="24"/> JSON</a></li>
+                                            <li><a href="#" onClick ="$('#tbl_billing').tableExport({type:'json',escape:'false',ignoreColumn:'[2,3]'});"><img src="../images/img/icons/json.png" width="24"/> JSON (ignoreColumn)</a></li>
+                                            <li><a href="#" onClick ="$('#tbl_billing').tableExport({type:'json',escape:'true'});"><img src="../images/img/icons/json.png" width="24"/> JSON (with Escape)</a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="#" onClick ="$('#tbl_billing').tableExport({type:'xml',escape:'false'});"><img src="../images/img/icons/xml.png" width="24"/> XML</a></li>
+                                            <li><a href="#" onClick ="$('#tbl_billing').tableExport({type:'sql'});"><img src="img/icons/sql.png" width="24"/> SQL</a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="#" onClick ="$('#tbl_billing').tableExport({type:'csv',escape:'false'});"><img src="../images/img/icons/csv.png" width="24"/> CSV</a></li>
+                                            <li><a href="#" onClick ="$('#tbl_billing').tableExport({type:'txt',escape:'false'});"><img src="../images/img/icons/txt.png" width="24"/> TXT</a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="#" onClick ="$('#tbl_billing').tableExport({type:'excel',escape:'false'});"><img src="../images/img/icons/xls.png" width="24"/> XLS</a></li>
+                                            <li><a href="#" onClick ="$('#tbl_billing').tableExport({type:'doc',escape:'false'});"><img src="../images/img/icons/word.png" width="24"/> Word</a></li>
+                                            <li><a href="#" onClick ="$('#tbl_billing').tableExport({type:'powerpoint',escape:'false'});"><img src="../images/img/icons/ppt.png" width="24"/> PowerPoint</a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="#" onClick ="$('#tbl_billing').tableExport({type:'png',escape:'false'});"><img src="../images/img/icons/png.png" width="24"/> PNG</a></li>
+                                            <li><a href="#" onClick ="$('#tbl_billing').tableExport({type:'pdf',escape:'false'});"><img src="../images/img/icons/pdf.png" width="24"/> PDF</a></li>
+                                        </ul>
+                                    </div>         -->                           
+                                    
+                                </div>
+                                <div class="panel-body">
+                                    <table id="tbl_billing" class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Bldg ID</th>
+                                                <th>Bldg Name</th>
+                                                <th>Due Date</th>
+                                                <th>Guards</th>
+                                                <th>Total time(hrs)</th>
+                                                <th>Cost/hour</th>
+                                                <th>Billing Amnt($)</th>
+                                                
+                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+										   <tr ng-repeat="bill in billing" for {{bill}}>
+                                                <td>{{bill.buildingAddress}}</td>
+                                                <td>{{bill.buildingName}}</td>
+                                                <td>{{bill.dueDate}}</td>
+                                                <td>{{bill.guardCount}}</td>
+                                                <td>{{bill.totalTime}}</td>
+                                                <td>{{bill.costPerHour}}</td>
+                                                <td>{{bill.billingAmount}}</td>
+                                                
+                                                
+                                           </tr>
+											
+                                           <!-- <tr>
+                                                <td>B1</td>
+                                                <td>Admin Block</td>
+                                                <td>April 20, 2015</td>
+                                                <td>3</td>
+                                                <td>500</td>
+                                                <td>10</td>
+                                                <td>5000</td>
+                                                <td>100</td>
+                                                <td>5100</td>
+                                                
+                                           </tr>
+                                            
+                                             <tr>
+                                                <td>B2</td>
+                                                <td>HR Block</td>
+                                                <td>April 21, 2015</td>
+                                                <td>3</td>
+                                                <td>400</td>
+                                                <td>10</td>
+                                                <td>4000</td>
+                                                <td>100</td>
+                                                <td>4100</td>
+                                                
+                                           </tr> -->
+                                            
+                                            
+                                        </tbody>
+                                    </table>                                    
+                                    
+                                </div>
+                            </div>
+                            <!-- END DATATABLE EXPORT -->                            
+                            
+                           
+
+                        </div>
+                    </div>
+
+                </div>         
+                <!-- END PAGE CONTENT WRAPPER -->
+           

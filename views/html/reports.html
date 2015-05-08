@@ -1,0 +1,163 @@
+<ul class="breadcrumb">
+                    <li><a href="#">Home</a></li>
+                    
+                    <li class="active">Reports</li>
+                </ul>
+                <!-- END BREADCRUMB -->
+                
+                <!-- PAGE TITLE -->
+               <!--  <div class="page-title">                    
+                    <h2><span class="fa fa-arrow-circle-o-left"></span> Basic Tables</h2>
+                </div>
+                 -->
+                <!-- END PAGE TITLE -->                
+                
+                <!-- PAGE CONTENT WRAPPER -->
+                <div class="page-content-wrap">
+      
+                    <div class="row">
+                        <div class="col-md-12" ng-init = "showReports()">
+                            
+                            <!-- START DATATABLE EXPORT -->
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                  <h3 class="panel-title">Reports</h3>
+                                                    
+                                 
+                                </div>
+                                <div class="panel-body">
+                                    <table id="tbl_report" class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>ReportDate</th>
+                                                <th>Building Name</th>
+												<th>Building Address</th>
+                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody >
+                                            <tr ng-repeat= "reportDisplay in report " for {{reportDisplay}}>
+                                                <td><a href="javascript:void();" data-toggle="modal" data-target="#divSelectedReport" ng-click ="ReportSelected(this)">{{reportDisplay.reportDate | date:'yyyy-MM-dd'}}</a></td>
+                                               
+                                                <td>{{reportDisplay.buildingName}}</td>
+                                                <td>{{reportDisplay.buildingAddress}}</td>
+                                                
+                                                
+                                           </tr>
+                                          <!--  
+                                             <tr>
+                                                <td><a href="#ReportSelected">Report2</a></td>
+                                                <td>April 10, 2015</td>
+                                                <td>B5</td>
+                                                <td>HR</td>
+                                                
+                                                
+                                           </tr>
+                                            -->
+                                            
+                                        </tbody>
+                                    </table>                                    
+                                    
+                                </div>
+                            </div>
+                            <!-- END DATATABLE EXPORT --> 
+                            
+				<div class="modal fade" id="divSelectedReport" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				 <div class="modal-dialog" style="width:75%">
+				   <div class="modal-content">
+				     <div class="modal-header">
+				       <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				       <h4 class="modal-title" id="myModalLabel">Report</h4>
+				     </div>
+				     <div class="modal-body" style="height:500px;overflow: auto;">
+				
+           
+                <!-- PAGE CONTENT WRAPPER -->
+                <div class="page-content-wrap">
+                
+                    
+                    
+                    <div class="row">
+                        <div class="col-md-12">
+                            
+                            <!-- START DATATABLE EXPORT -->
+                            <div class="panel panel-default">
+                                
+                                <div class="panel-body">
+                                    <table id="tbl_report_selected" class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Property Name: {{oldreportDisplay.buildingName}}</th>
+                                                <th>Date: {{oldreportDisplay.reportDate | date:'yyyy-MM-dd'}}</th>
+                                                
+                                              </tr>
+                                        </thead>
+                                        
+                                        
+                                        <tbody>
+                                           <tr><td></td><td></td></tr>
+                                            <tr>
+                                                <td><b>Patrol Schedule</b></td>
+<!--                                                 <td>time1<br>time2<br>time3</td> -->
+<!--                                                 <td></td> -->
+												<td><b>Guard Name</b></td>
+												
+												
+                                            </tr>
+                                            <tr ng-repeat="schedule in patrolValue" for {{schedule}}>
+                                            
+                                            <td>{{schedule.record_time}}</td>
+                                            <td>{{schedule.guard_name}}</td>
+                                            </tr>
+                                            <tr><td></td><td></td></tr>
+                                           <!-- Calls Start -->
+                                            <tr ng-repeat="reportData in reportValue" for {{report}}>
+                                                <td><b>{{reportData.alert_type}}</b></td>
+                                                <td>{{reportData.description}}</td>
+                                            </tr>
+                                            <tr><td></td><td></td></tr>
+                                            <!-- Calls end -->
+                                            
+                                            <!-- Patrols starts -->
+                                           <tr>
+                                                <td><b>Guard Comments</b></td>
+                                                <td></td>
+                                                
+                                            </tr>
+                                            
+                                            <tr ng-repeat = "guard in guardComments" for {{guard}}>
+                                                <td>{{guard.record_time}}</td>
+                                                <td>{{guard.description}}</td>
+                                                
+                                            </tr>
+                                            
+                                            
+                                           
+                                            <!-- Patrol ends -->
+                                            
+                                            
+                                            
+                                        </tbody>
+                                        
+                                    </table>                                    
+                                    
+                                </div>
+                            </div>
+                            <!-- END DATATABLE EXPORT -->                            
+                            
+                           
+                        </div>
+                    </div>
+                           
+            <!-- END PAGE CONTENT -->
+        </div>
+				     
+				    </div>
+				  </div>
+				</div>                           
+                            
+                           
+                        </div>
+                    </div>
+                </div>         
+                <!-- END PAGE CONTENT WRAPPER -->

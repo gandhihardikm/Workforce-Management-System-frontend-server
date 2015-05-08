@@ -1,0 +1,505 @@
+<div class="row">
+    <div class="col-md-12">
+        <!-- START DEFAULT DATATABLE -->
+        <div class="panel panel-default">
+            <div class="panel-heading">                                
+                <h3 class="panel-title">Clients</h3>
+                
+                <ul class="panel-controls">
+                	<li><button class="btn btn-primary"  data-toggle="modal" data-target="#divEditClient" ng-click="addClient()"><span class="fa fa-plus"></span> Add New Client</button></li>
+                	<!-- 
+                    <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
+                    <li><a href="#" class="panel-refresh"><span class="fa fa-refresh"></span></a></li>
+                    <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>  -->
+                          </ul>                                
+                      </div>
+
+                      <div class="panel-body">
+                          <table id="tblClientList" class="table">
+                              <thead>
+                                  <tr>
+                                      <th>Name</th>
+                                      <th>Email</th>
+                                      <th>SSN</th>
+                                      <th>Amount Paid</th>
+                                      <th>Amount Due</th>
+                                      <th>Contract Start Date</th>
+                                      <th>Contract End Date</th>
+                                      <th></th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  <tr ng-repeat="client in clients">
+                                      <td><a href="javascript:void();" ng-click="getAlerts(this)" data-toggle="modal" data-target="#divClientAlerts">{{client.first_name}} {{client.last_name}} </a></td>
+                                      <td>{{client.email_id}}</td>
+                                      <td>{{client.person_ssn}}</td>
+                                      <td>{{client.amount_paid}}</td>
+                                      <td>{{client.amount_due}}</td>
+                                      <td>{{client.contract_start_date| date:'mm/dd/yyyy'}}</td>
+                                      <td>{{client.contract_end_date| date:'mm/dd/yyyy'}}</td>
+                                      <td>
+				<ul class="panel-controls">
+                              <li><a href="javascript:void();" ng-click="generateClientBill(this)" class="panel-edit" data-toggle="modal" data-target="#divClientBill" ><span class="fa fa-money"></span></a></li>
+                              <li><a href="javascript:void();" ng-click="editClient(this)" class="panel-edit" data-toggle="modal" data-target="#divEditClient" ><span class="fa fa-pencil"></span></a></li>
+<li><a ng-click="confirmDeleteClient(this)" class="mb-control" data-box="#mb-clientdelete"><span class="fa fa-times"></span></a></li>
+                          </ul>
+		</td>
+                                  </tr>
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+                  <!-- END DEFAULT DATATABLE -->
+
+    </div>
+</div>                                
+
+<!-- PAGE CONTENT WRAPPER -->  
+<!-- EDIT CLIENT MODAL DIALOG START-->
+<form>
+	<div class="modal fade" id="divEditClient" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal-dialog" style="width:75%">
+<div class="modal-content">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <h4 class="modal-title" id="myModalLabel">Client</h4>
+  </div>
+  <div class="modal-body" style="height: 500px;overflow: auto;">
+     <form name="frmClientAddEdit" id="frmClientAddEdit" class="form-horizontal" >
+<div class="row">
+   <div class="col-md-6">
+   		<div class="form-group">
+         <label class="col-md-3 control-label">Email</label>
+         <div class="col-md-9">
+            <div class="input-group">
+               <input type="email" required  name="txtClientEmail" id="txtClientEmail" ng-model="editClientObj.email_id"  class="form-control"/>
+            </div>
+            <span class="help-block"></span>
+         </div>
+      </div>
+      <div class="form-group">
+         <label class="col-md-3 control-label">First Name</label>
+         <div class="col-md-9">
+            <div class="input-group">
+               <input type="text" required  name="txtFirstName" id="txtFirstName" ng-model="editClientObj.first_name" value="{{editClientObj.first_name}}"  class="form-control"/>
+            </div>
+            <span class="help-block"></span>
+         </div>
+      </div>
+      <div class="form-group">
+         <label class="col-md-3 control-label">Last Name</label>
+         <div class="col-md-9">
+            <div class="input-group">
+               <input type="text" required  name="txtLastName" id="txtLastName" ng-model="editClientObj.last_name" value="{{editClientObj.last_name}}" class="form-control"/>
+            </div>
+            <span class="help-block"></span>
+         </div>
+      </div>
+      <div class="form-group">
+         <label class="col-md-3 control-label">SSN</label>
+         <div class="col-md-9">
+            <div class="input-group">
+               <input type="text" required ui-mask="999-99-9999" name="txtSSN" id="txtSSN" ng-model="editClientObj.client_ssn" value="{{editClientObj.client_ssn}}" class="form-control"/>
+            </div>
+            <span class="help-block"></span>
+         </div>
+      </div>
+      <div class="form-group">
+         <label class="col-md-3 control-label">Password</label>
+         <div class="col-md-9">
+            <div class="input-group">
+               <input type="password" required name="txtPassword" id="txtPassword" ng-model="editClientObj.password" value="{{editClientObj.password}}" class="form-control"/>
+            </div>
+            <span class="help-block"></span>
+         </div>
+      </div>
+       <div class="form-group">
+         <label class="col-md-3 control-label">Confirm Password</label>
+         <div class="col-md-9">
+            <div class="input-group">
+               <input type="password" required name="txtConfirmPassword" id="txtConfirmPassword" ng-model="editClientObj.confirmpassword" value="{{editClientObj.confirmpassword}}" class="form-control"/>
+            </div>
+            <span class="help-block"></span>
+         </div>
+      </div>
+     
+   </div>
+   <div class="col-md-6">
+  
+      
+       <div class="form-group">
+         <label class="col-md-4 control-label">Address</label>
+         <div class="col-md-8">
+            <div class="input-group">
+               <input type="text" required  name="txtAddress" id="txtAddress" ng-model="editClientObj.address" value="{{editClientObj.address}}"  class="form-control" />
+            </div>
+            <span class="help-block"></span>
+         </div>
+      </div>
+      <div class="form-group">
+         <label class="col-md-4 control-label">City</label>
+         <div class="col-md-8">
+            <div class="input-group">
+               <input type="text" required  name="txtCity" id="txtCity" ng-model="editClientObj.city" value="{{editClientObj.city}}"  class="form-control"/>
+            </div>
+            <span class="help-block"></span>
+         </div>
+      </div>
+      <div class="form-group">
+         <label class="col-md-4 control-label">State</label>
+         <div class="col-md-8">
+            <div class="input-group">
+               <select required class="form-control select" id="selectState" value="{{editClientObj.state}}"  ng-model="editClientObj.state" >
+                                                <option value="">Select Status</option>
+		                <option value="{{state.name}}" ng-repeat="state in states">{{state.name}}</option>						                
+                </select>
+            </div>
+            <span class="help-block"></span>
+         </div>
+      </div>
+       <div class="form-group">
+         <label class="col-md-4 control-label">Zipcode</label>
+         <div class="col-md-8">
+            <div class="input-group">
+               <input type="text" required ui-mask="99999" name="txtZipcode" id="txtZipcode" ng-model="editClientObj.zipcode" value="{{editClientObj.zipcode}}"  class="form-control"/>
+            </div>
+            <span class="help-block"></span>
+         </div>
+      </div>
+       <div class="form-group">
+         <label class="col-md-4 control-label">Phone Number</label>
+         <div class="col-md-8">
+            <div class="input-group">
+               <input type="text" required ui-mask="(999)-999-9999"  name="txtPhoneNumber" id="txtPhoneNumber" ng-model="editClientObj.phone_number" value="{{editClientObj.phone_number}}"  class="form-control"/>
+            </div>
+            <span class="help-block"></span>
+         </div>
+      </div>
+      <div class="form-group">
+         <label class="col-md-4 control-label">Contract Start Date</label>
+         <div class="col-md-8">
+            <div class="input-group">
+               <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+               <input type="date" ng-model="editClientObj.contract_start_date" value="{{editClientObj.contract_start_date}}" required date id="txtContractStartDate" name="txtContractStartDate" class="form-control" >                                            
+            </div>
+            <span class="help-block"></span>
+         </div>
+      </div>
+      <div class="form-group">
+         <label class="col-md-4 control-label">Contract End Date</label>
+         <div class="col-md-8">
+            <div class="input-group">
+               <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+               <input ContractEndDate type="date" ng-model="editClientObj.contract_end_date" value="{{editClientObj.contract_end_date}}" required endDate date id="txtContractEndDate" name="txtContractEndDate" class="form-control">
+            </div>
+            <span class="help-block"></span>
+         </div>
+      </div>
+    <div class="form-group" ng-if="editClientObj.operation == 1">
+         <label class="col-md-4 control-label">Service Amount</label>
+         <div class="col-md-8">
+            <div class="input-group">
+               <input type="text" required name="txtServiceAmount" id="txtServiceAmount" ng-model="editClientObj.service_amount" value="{{editClientObj.service_amount}}" class="form-control"/>
+            </div>
+            <span class="help-block"></span>
+         </div>
+      </div>
+       <div class="form-group" ng-if="editClientObj.operation == 1">
+         <label class="col-md-4 control-label">Amount Paid</label>
+         <div class="col-md-8">
+            <div class="input-group">
+               <input type="text" name="txtAmountPaid" id="txtAmountPaid" ng-model="editClientObj.amount_paid" value="{{editClientObj.amount_paid}}" class="form-control"/>
+            </div>
+            <span class="help-block"></span>
+         </div>
+      </div>
+      <div class="form-group" ng-if="editClientObj.operation == 1">
+         <label class="col-md-4 control-label">Amount Due</label>
+         <div class="col-md-8">
+            <div class="input-group">
+               <input type="text" name="txtAmountDue"  id="txtAmountDue" ng-model="editClientObj.amount_due" value="{{editClientObj.amount_due}}" class="form-control"/>
+            </div>
+            <span class="help-block"></span>
+         </div>
+      </div>
+   </div>
+   
+   <!-- START COLLAPSE -->
+<div ng-if="editClientObj.operation == 0" class="panel-group" id="accordion" role="tablist" aria-multiselectable="true" style="margin-top: 5%;">
+<div class="panel panel-default">
+  <div class="panel-heading" role="tab" id="headingOne">
+    <h4 class="panel-title">
+    <i class="fa fa-plus" style="margin-right: 10px;"></i>
+	        <a data-toggle="collapse" data-parent="#accordion" href="#collapseAddBuilding" aria-expanded="true" aria-controls="collapseOne">
+	          Add Building
+	        </a>
+	      </h4>
+	    </div>
+	    <div id="collapseAddBuilding" class="panel-collapse" role="tabpanel" aria-labelledby="headingOne">
+	      <div class="panel-body">
+	       
+	       <form name="frmBuildingAddEdit" id="frmBuildingAddEdit" class="form-horizontal" >
+<div class="row">
+   <div class="col-md-6">
+   		<div class="form-group">
+         <label class="col-md-3 control-label">Name</label>
+         <div class="col-md-9">
+            <div class="input-group">
+               <input type="text" required  name="txtBuildingName" id="txtBuildingName" ng-model="editClientObj.buildingName" value={{editClientObj.buildingName}}"  class="form-control"/>
+            </div>
+            <span class="help-block"></span>
+         </div>
+      </div>
+      <div class="form-group">
+         <label class="col-md-3 control-label">Address</label>
+         <div class="col-md-9">
+            <div class="input-group">
+               <input type="text" required  name="txtBuildingAddress" id="txtBuildingAddress" ng-model="editClientObj.buildingAddress" value="{{editClientObj.buildingAddress}}"  class="form-control"/>
+            </div>
+            <span class="help-block"></span>
+         </div>
+      </div>
+      <div class="form-group">
+         <label class="col-md-3 control-label">Zipcode</label>
+         <div class="col-md-9">
+            <div class="input-group">
+               <input type="text" required ui-mask="99999" name="txtBuildingZipcode" id="txtBuildingZipcode" ng-model="editClientObj.buildingZipcode" value="{{editClientObj.buildingZipcode}}" class="form-control"/>
+            </div>
+            <span class="help-block"></span>
+         </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+         <label class="col-md-3 control-label">Release Date</label>
+         <div class="col-md-9">
+            <div class="input-group">
+               <input type="date" required  name="txtReleaseDate" id="txtReleaseDate" ng-model="editClientObj.buildingReleaseDate" value="{{editClientObj.buildingReleaseDate}}"  class="form-control datepicker" />
+            </div>
+            <span class="help-block"></span>
+         </div>
+      </div>
+      <div class="form-group">
+         <label class="col-md-3 control-label">Service Fee</label>
+         <div class="col-md-9">
+            <div class="input-group">
+               <input type="text" required  name="txtBuildingServiceFee" id="txtBuildingServiceFee" ng-model="editClientObj.serviceFee" value="{{editClientObj.serviceFee}}"  class="form-control"/>
+            </div>
+            <span class="help-block"></span>
+         </div>
+      </div>
+      
+   </div>
+</div>
+
+ 
+ </form>
+	       
+	      </div>
+	    </div>
+	  </div>
+	  <div  ng-if="editClientObj.operation == 0" class="panel panel-default">
+	    <div class="panel-heading" role="tab" id="headingTwo">
+	      <h4 class="panel-title">
+	      <i class="fa fa-plus" style="margin-right: 10px;"></i>
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseAddCheckpoint" aria-expanded="false" aria-controls="collapseTwo">
+          Add Checkpoint
+        </a>
+      </h4>
+    </div>
+    <div id="collapseAddCheckpoint" class="panel-collapse" role="tabpanel" aria-labelledby="headingTwo">
+      <div class="panel-body">
+        <form name="frmcheCheckpointAddEdit" id="frmCheckpointAddEdit" class="form-horizontal" >
+		<div class="row">
+		   <div class="col-md-4">
+		   		<div class="form-group">
+		         <label class="col-md-3 control-label">Name</label>
+		         <div class="col-md-9">
+		            <div class="input-group">
+		               <input type="text" required  name="txtCheckpoint" id="txtCheckpoint" ng-model="editClientObj.checkpoint_name" value="{{editClientObj.checkpoint_name}}"  class="form-control"/>
+		            </div>
+		            <span class="help-block"></span>
+		         </div>
+		      </div>
+		   </div>
+		    <div class="col-md-4">
+		   		<div class="form-group">
+		         <label class="col-md-3 control-label">Latitude</label>
+		         <div class="col-md-9">
+		            <div class="input-group">
+		               <input type="text" required  name="txtLatitude" id="txtLatitude" ng-model="editClientObj.latitude" value="{{editClientObj.latitude}}" class="form-control"/>
+		            </div>
+		            <span class="help-block"></span>
+		         </div>
+		      </div>
+		   </div>
+		   
+		   <div class="col-md-4">
+		   		 <div class="form-group">
+		         <label class="col-md-3 control-label">Longitude</label>
+		         <div class="col-md-9">
+		            <div class="input-group">
+		               <input type="text" required  name="txtLongitude" id="txtLongitude" ng-model="editClientObj.longitude" value="{{editClientObj.longitude}}" class="form-control"/>
+		            </div>
+		            <span class="help-block"></span>
+		         </div>
+		      </div>
+		   </div>
+		   
+		   </div>
+		</div>
+		</form>
+      </div>
+    </div>
+  </div>
+</div>
+  <!-- END COLLAPSE -->
+</div>
+ <div style="margin:20px">
+       		<input class="btn btn-primary" class="submit" ng-click="saveClient()" type="submit" value="Save">
+			<button class="btn" data-dismiss="modal" ng-click="cancelClient()">Cancel</button>
+      	</div>
+		 
+		 </form>
+	  </div>
+     
+    </div>
+  </div>
+</div>
+</form>
+
+<!-- CLIENT BILL MODAL DIALOG START-->
+<div class="modal fade" id="divClientBill" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" style="width:75%">
+<div class="modal-content">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <h4 class="modal-title" id="myModalLabel">Client Bill</h4>
+  </div>
+  <div class="modal-body" style="height: auto;overflow: auto;">
+<div class="btn-group pull-right">
+               <button class="btn btn-danger dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i> Export Data</button>
+               <ul class="dropdown-menu">
+                   <li><a href="javascript:void();" onClick ="$('#tblClientBill').tableExport({type:'json',escape:'false'});"><img src='../node_modules/joli/img/icons/json.png' width="24"/> JSON</a></li>
+         <li><a href="javascript:void();" onClick ="$('#tblClientBill').tableExport({type:'json',escape:'false',ignoreColumn:'[2,3]'});"><img src='../node_modules/joli/img/icons/json.png' width="24"/> JSON (ignoreColumn)</a></li>
+         <li><a href="javascript:void();" onClick ="$('#tblClientBill').tableExport({type:'json',escape:'true'});"><img src='../node_modules/joli/img/icons/json.png' width="24"/> JSON (with Escape)</a></li>
+         <li class="divider"></li>
+         <li><a href="javascript:void();" onClick ="$('#tblClientBill').tableExport({type:'xml',escape:'false'});"><img src='../node_modules/joli/img/icons/xml.png' width="24"/> XML</a></li>
+         <li><a href="javascript:void();" onClick ="$('#tblClientBill').tableExport({type:'sql'});"><img src='../node_modules/joli/img/icons/sql.png' width="24"/> SQL</a></li>
+         <li class="divider"></li>
+         <li><a href="javascript:void();" onClick ="$('#tblClientBill').tableExport({type:'csv',escape:'false'});"><img src='../node_modules/joli/img/icons/csv.png' width="24"/> CSV</a></li>
+         <li><a href="javascript:void();" onClick ="$('#tblClientBill').tableExport({type:'txt',escape:'false'});"><img src='../node_modules/joli/img/icons/txt.png' width="24"/> TXT</a></li>
+         <li class="divider"></li>
+         <li><a href="javascript:void();" onClick ="$('#tblClientBill').tableExport({type:'excel',escape:'false'});"><img src='../node_modules/joli/img/icons/xls.png' width="24"/> XLS</a></li>
+         <li><a href="javascript:void();" onClick ="$('#tblClientBill').tableExport({type:'doc',escape:'false'});"><img src='../node_modules/joli/img/icons/word.png' width="24"/> Word</a></li>
+         <li><a href="javascript:void();" onClick ="$('#tblClientBill').tableExport({type:'powerpoint',escape:'false'});"><img src='../node_modules/joli/img/icons/ppt.png' width="24"/> PowerPoint</a></li>
+         <li class="divider"></li>
+         <li><a href="javascript:void();" onClick ="$('#tblClientBill').tableExport({type:'png',escape:'false'});"><img src='../node_modules/joli/img/icons/png.png' width="24"/> PNG</a></li>
+         <li><a href="javascript:void();" onClick ="$('#tblClientBill').tableExport({type:'pdf',escape:'false'});"><img src='../node_modules/joli/img/icons/pdf.png' width="24"/> PDF</a></li>
+                       </ul>
+                   </div>
+	   	<table id="tblClientBill" class="table">
+			<tbody>
+			    <tr><td>Client</td><td>{{editClientObj.first_name}} {{editClientObj.last_name}}</td></tr>
+			    <tr><td>Email Address: </td><td>{{editClientObj.email_id}}</td></tr>
+			    <tr><td>Phone number: </td><td>{{editClientObj.phone_number}}</td></tr>
+			    <tr><td>Amount Paid: </td><td>{{editClientObj.amount_paid}}</td></tr>
+			    <tr><td>Amount Paid: </td><td>{{editClientObj.amount_paid}}</td></tr>
+			    <tr><td>Amount Due: </td><td>{{editClientObj.amount_due}}</td></tr>
+			    <tr><td>Contract Start Date: </td><td>{{editClientObj.contract_start_date}}</td></tr>
+			    <tr><td>Contract End Date: </td><td>{{editClientObj.contract_end_date}}</td></tr>
+			</tbody>
+            </table>
+	  </div>
+    </div>
+  </div>
+</div>
+<!--  END-->
+
+
+
+<!-- CLIENT BILL MODAL DIALOG START-->
+<div class="modal fade" id="divClientAlerts" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" style="width:75%">
+<div class="modal-content">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <h4 class="modal-title" id="myModalLabel">Alerts</h4>
+  </div>
+  <div class="modal-body" style="height: auto;overflow: auto;">
+<div class="btn-group pull-right">
+               <button class="btn btn-danger dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i> Export Data</button>
+               <ul class="dropdown-menu">
+                   <li><a href="javascript:void();" onClick ="$('#tbl_alert').tableExport({type:'json',escape:'false'});"><img src='../node_modules/joli/img/icons/json.png' width="24"/> JSON</a></li>
+         <li><a href="javascript:void();" onClick ="$('#tbl_alert').tableExport({type:'json',escape:'false',ignoreColumn:'[2,3]'});"><img src='../node_modules/joli/img/icons/json.png' width="24"/> JSON (ignoreColumn)</a></li>
+         <li><a href="javascript:void();" onClick ="$('#tbl_alert').tableExport({type:'json',escape:'true'});"><img src='../node_modules/joli/img/icons/json.png' width="24"/> JSON (with Escape)</a></li>
+         <li class="divider"></li>
+         <li><a href="javascript:void();" onClick ="$('#tbl_alert').tableExport({type:'xml',escape:'false'});"><img src='../node_modules/joli/img/icons/xml.png' width="24"/> XML</a></li>
+         <li><a href="javascript:void();" onClick ="$('#tbl_alert').tableExport({type:'sql'});"><img src='../node_modules/joli/img/icons/sql.png' width="24"/> SQL</a></li>
+         <li class="divider"></li>
+         <li><a href="javascript:void();" onClick ="$('#tbl_alert').tableExport({type:'csv',escape:'false'});"><img src='../node_modules/joli/img/icons/csv.png' width="24"/> CSV</a></li>
+         <li><a href="javascript:void();" onClick ="$('#tbl_alert').tableExport({type:'txt',escape:'false'});"><img src='../node_modules/joli/img/icons/txt.png' width="24"/> TXT</a></li>
+         <li class="divider"></li>
+         <li><a href="javascript:void();" onClick ="$('#tbl_alert').tableExport({type:'excel',escape:'false'});"><img src='../node_modules/joli/img/icons/xls.png' width="24"/> XLS</a></li>
+         <li><a href="javascript:void();" onClick ="$('#tbl_alert').tableExport({type:'doc',escape:'false'});"><img src='../node_modules/joli/img/icons/word.png' width="24"/> Word</a></li>
+         <li><a href="javascript:void();" onClick ="$('#tbl_alert').tableExport({type:'powerpoint',escape:'false'});"><img src='../node_modules/joli/img/icons/ppt.png' width="24"/> PowerPoint</a></li>
+         <li class="divider"></li>
+         <li><a href="javascript:void();" onClick ="$('#tbl_alert').tableExport({type:'png',escape:'false'});"><img src='../node_modules/joli/img/icons/png.png' width="24"/> PNG</a></li>
+         <li><a href="javascript:void();" onClick ="$('#tbl_alert').tableExport({type:'pdf',escape:'false'});"><img src='../node_modules/joli/img/icons/pdf.png' width="24"/> PDF</a></li>
+                       </ul>
+                   </div>
+	   	<table id="tbl_alert" class="table">
+                                        <thead>
+                                            <tr>
+                                            	
+                                                <th>Alert ID</th>
+                                                <th>Date-Time</th>
+                                                <th>Severity</th>
+                                                <th>Building ID</th>
+                                                <th>Building Name</th>
+                                                <th>Guard ID</th>
+                                                <th>Guard Name</th>
+                                                <th>Guard Comment</th>
+                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody >
+                                            <tr ng-repeat = "alert in alertlist" >
+										       <td id="alertID"><span>{{alert.alertID}}</span></td>
+                                                <td id="datetime">{{alert.dateTime}}</td>
+                                                <td id="severity">{{alert.severity}}</td>
+                                                <td id="buildingID">{{alert.buildingID}}</td>
+                                                <td id="buildingName">{{alert.buildingName}}</td>
+                                                <td id="guardID">{{alert.guardID}}</td>
+                                                <td id="guardName">{{alert.guardName}}</td>
+                                                <td id="comment">{{alert.comment}}</td>
+											</tr>
+										    
+                                        </tbody>
+                                    </table> 
+	  </div>
+    </div>
+  </div>
+</div>
+<!--  END-->
+
+<!-- DHVANI SHAH 21-Apr-2015 DELETE MESSAGE BOX START-->
+
+<div class="message-box animated fadeIn" data-sound="alert" id="mb-clientdelete">
+    <div class="mb-container">
+        <div class="mb-middle">
+            <div class="mb-title"><span class="fa fa-times"></span> Delete Client</div>
+            <div class="mb-content">
+                <p>Are you sure you want to delete this record?</p>                    
+                <p>Press No if youwant to continue work. Press Yes to delete.</p>
+            </div>
+            <div class="mb-footer">
+                <div class="pull-right">
+                    <a class="btn btn-success btn-lg" ng-click="deleteClient(deleteClientObj.person_ssn)">Yes</a>
+                    <button id="divCancelClientDelete" ng-click="cancelDeleteClient()" class="btn btn-default btn-lg mb-control-close">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        <!-- DHVANI SHAH 21-Apr-2015 DELETE MESSAGE BOX END-->

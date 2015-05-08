@@ -1,0 +1,169 @@
+<ul class="breadcrumb">
+                    <li><a href="#">Home</a></li>
+                     <li class="active">Reports</li>
+                    <li>Reports Selected</li>
+                </ul>
+                <!-- END BREADCRUMB -->
+                
+                <!-- PAGE TITLE -->
+               <!--  <div class="page-title">                    
+                    <h2><span class="fa fa-arrow-circle-o-left"></span> Basic Tables</h2>
+                </div>
+                 -->
+                <!-- END PAGE TITLE -->                
+                
+                <!-- PAGE CONTENT WRAPPER -->
+                <div class="page-content-wrap">
+                
+                    
+                    
+                    <div class="row">
+                        <div class="col-md-12">
+                            
+                            <!-- START DATATABLE EXPORT -->
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                  <h3 class="panel-title">Report</h3>
+                                                    
+                                    <div class="btn-group pull-right">
+                                        <button class="btn btn-danger dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i> Export Data</button>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="#" onClick ="$('#tbl_report_selected').tableExport({type:'json',escape:'false'});"><img src="../images/img/icons/json.png" width="24"/> JSON</a></li>
+                                            <li><a href="#" onClick ="$('#tbl_report_selected').tableExport({type:'json',escape:'false',ignoreColumn:'[2,3]'});"><img src="../images/img/icons/json.png" width="24"/> JSON (ignoreColumn)</a></li>
+                                            <li><a href="#" onClick ="$('#tbl_report_selected').tableExport({type:'json',escape:'true'});"><img src="../images/img/icons/json.png" width="24"/> JSON (with Escape)</a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="#" onClick ="$('#tbl_report_selected').tableExport({type:'xml',escape:'false'});"><img src="../images/img/icons/xml.png" width="24"/> XML</a></li>
+                                            <li><a href="#" onClick ="$('#tbl_report_selected').tableExport({type:'sql'});"><img src="../images/img/icons/sql.png" width="24"/> SQL</a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="#" onClick ="$('#tbl_report_selected').tableExport({type:'csv',escape:'false'});"><img src="../images/img/icons/csv.png" width="24"/> CSV</a></li>
+                                            <li><a href="#" onClick ="$('#tbl_report_selected').tableExport({type:'txt',escape:'false'});"><img src="../images/img/icons/txt.png" width="24"/> TXT</a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="#" onClick ="$('#tbl_report_selected').tableExport({type:'excel',escape:'false'});"><img src="../images/img/icons/xls.png" width="24"/> XLS</a></li>
+                                            <li><a href="#" onClick ="$('#tbl_report_selected').tableExport({type:'doc',escape:'false'});"><img src="../images/img/icons/word.png" width="24"/> Word</a></li>
+                                            <li><a href="#" onClick ="$('#tbl_report_selected').tableExport({type:'powerpoint',escape:'false'});"><img src="../images/img/icons/ppt.png" width="24"/> PowerPoint</a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="#" onClick ="$('#tbl_report_selected').tableExport({type:'png',escape:'false'});"><img src="../images/img/icons/png.png" width="24"/> PNG</a></li>
+                                            <li><a href="#" onClick ="$('#tbl_report_selected').tableExport({type:'pdf',escape:'false'});"><img src="../images/img/icons/pdf.png" width="24"/> PDF</a></li>
+                                        </ul>
+                                    </div>                                    
+                                    
+                                </div>
+                                <div class="panel-body">
+                                    <table id="tbl_report_selected" class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Property Name: {{building}}</th>
+                                                <th>Date: {{reportDate}}</th>
+                                                <th>Guard: ABC (G1)</th>
+                                              </tr>
+                                        </thead>
+                                        
+                                        
+                                        <tbody>
+                                           
+                                            <tr>
+                                                <td><b>Patrol Schedule</b></td>
+                                                <td>time1<br>time2<br>time3</td>
+                                                <td></td>
+                                            </tr>
+                                           <!-- Calls Start -->
+                                            <tr>
+                                                <td><b>Incident Reports</b></td>
+                                                <td></td>
+                                                <td></td>
+                                                
+                                            </tr>
+                                            <tr>
+                                                <td>No Incident Reports for this Daily Report</td>
+                                                <td></td>
+                                                <td></td>
+                                                
+                                            </tr>
+                                            
+                                            <tr>
+                                                <td><b>Parking Violations</b></td>
+                                                <td></td>
+                                                <td></td>
+                                                
+                                                
+                                            </tr>
+                                            <tr>
+                                                <td>No</td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            
+                                             <tr>
+                                                <td><b>Maintainance Calls</b></td>
+                                                <td></td>
+                                                <td></td>
+                                                
+                                                
+                                            </tr>
+                                            <tr>
+                                                <td>No</td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            
+                                             <tr>
+                                                <td><b>Service Calls</b></td>
+                                                <td></td>
+                                                <td></td>
+                                                
+                                                
+                                            </tr>
+                                            <tr>
+                                                <td>No</td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            <!-- Calls end -->
+                                            
+                                            <!-- Patrols starts -->
+                                           <tr>
+                                                <td><b>Patrols</b></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            
+                                            <tr>
+                                                <td>Round1 time</td>
+                                                <td>Guard patrolling comments hereGuard patrolling comments hereGuard patrolling comments here</td>
+                                                <td></td>
+                                                
+                                            </tr>
+                                            
+                                             <tr>
+                                                <td>Round2 time</td>
+                                                <td>Guard patrolling comments hereGuard patrolling comments hereGuard patrolling comments here</td>
+                                                <td></td>
+                                                
+                                            </tr>
+                                            
+                                             <tr>
+                                                <td>Round3 time</td>
+                                                <td>Guard patrolling comments hereGuard patrolling comments hereGuard patrolling comments here</td>
+                                                <td></td>
+                                                
+                                            </tr>
+                                            
+                                           
+                                            <!-- Patrol ends -->
+                                            
+                                            
+                                            
+                                        </tbody>
+                                        
+                                    </table>                                    
+                                    
+                                </div>
+                            </div>
+                            <!-- END DATATABLE EXPORT -->                            
+                            
+                           
+                        </div>
+                    </div>
+                           
+            <!-- END PAGE CONTENT -->
+        </div>

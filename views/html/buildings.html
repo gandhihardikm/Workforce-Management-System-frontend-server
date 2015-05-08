@@ -1,0 +1,90 @@
+ <!-- START BREADCRUMB -->
+                <ul class="breadcrumb">
+                    <li><a href="#">Home</a></li>
+                    
+                    <li class="active">Buildings</li>
+                </ul>
+                <!-- END BREADCRUMB -->
+                
+                <!-- PAGE TITLE -->
+               <!--  <div class="page-title">                    
+                    <h2><span class="fa fa-arrow-circle-o-left"></span> Basic Tables</h2>
+                </div>
+                 -->
+                <!-- END PAGE TITLE -->                
+                
+                <!-- PAGE CONTENT WRAPPER -->
+                <div class="page-content-wrap" ng-init = "showBuilding()">
+                
+                    
+                    
+                    <div class="row">
+                        <div class="col-md-12">
+                            
+                            <!-- START DATATABLE EXPORT -->
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <div class="page-title">                    
+                            <h2><span class="fa fa-building-o"></span> Buildings</h2>
+                        </div> 
+                                  <!--                   
+                                    <div class="btn-group pull-right">
+                                        <button class="btn btn-danger dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i> Export Data</button>
+                                       <ul class="dropdown-menu">
+                                            <li><a href="#" onClick ="$('#tbl_building').tableExport({type:'json',escape:'false'});"><img src="../images/img/icons/json.png" width="24"/> JSON</a></li>
+                                            <li><a href="#" onClick ="$('#tbl_building').tableExport({type:'json',escape:'false',ignoreColumn:'[2,3]'});"><img src="../images/img/icons/json.png" width="24"/> JSON (ignoreColumn)</a></li>
+                                            <li><a href="#" onClick ="$('#tbl_building').tableExport({type:'json',escape:'true'});"><img src="../images/img/icons/json.png" width="24"/> JSON (with Escape)</a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="#" onClick ="$('#tbl_building').tableExport({type:'xml',escape:'false'});"><img src="../images/img/icons/xml.png" width="24"/> XML</a></li>
+                                            <li><a href="#" onClick ="$('#tbl_building').tableExport({type:'sql'});"><img src="../images/img/icons/sql.png" width="24"/> SQL</a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="#" onClick ="$('#tbl_building').tableExport({type:'csv',escape:'false'});"><img src="../images/img/icons/csv.png" width="24"/> CSV</a></li>
+                                            <li><a href="#" onClick ="$('#tbl_building').tableExport({type:'txt',escape:'false'});"><img src="../images/img/icons/txt.png" width="24"/> TXT</a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="#" onClick ="$('#tbl_building').tableExport({type:'excel',escape:'false'});"><img src="../images/img/icons/xls.png" width="24"/> XLS</a></li>
+                                            <li><a href="#" onClick ="$('#tbl_building').tableExport({type:'doc',escape:'false'});"><img src="../images/img/icons/word.png" width="24"/> Word</a></li>
+                                            <li><a href="#" onClick ="$('#tbl_building').tableExport({type:'powerpoint',escape:'false'});"><img src="../images/img/icons/ppt.png" width="24"/> PowerPoint</a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="#" onClick ="$('#tbl_building').tableExport({type:'png',escape:'false'});"><img src="../images/img/icons/png.png" width="24"/> PNG</a></li>
+                                            <li><a href="#" onClick ="$('#tbl_building').tableExport({type:'pdf',escape:'false'});"><img src="../images/img/icons/pdf.png" width="24"/> PDF</a></li>
+                                        </ul>
+                                    </div>    -->                                 
+                                    
+                                </div>
+                                <div class="panel-body">
+                                    <table id="tbl_building" class="table">
+                                        <thead>
+                                            <tr>
+                                          		<th>Building Name</th>
+                                                <th>Building Address</th>
+                                                <th>CheckPoint(s)</th>
+                                                <th>Guard(s)</th>
+                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                           
+										
+											<tr  ng-repeat = "buildingInfo in buildings" for {{buildingInfo}}>
+												<td>{{buildingInfo.building_name}}</td>
+        	                                     <td>{{buildingInfo.address}}</td>
+                                                 <td>{{buildingInfo.check_point_name}}</td>
+                                                 <td>{{buildingInfo.guard_name}}</td>
+											</tr>
+  
+                                        </tbody>
+                                    </table>                                    
+                                    
+                                </div>
+                            </div>
+                            <!-- END DATATABLE EXPORT -->                            
+                            
+                           
+
+                        </div>
+                    </div>
+
+                </div>         
+                <!-- END PAGE CONTENT WRAPPER -->
+            
+        <!-- END PAGE CONTAINER -->   

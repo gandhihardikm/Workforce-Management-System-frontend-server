@@ -1,0 +1,181 @@
+			<!-- START BREADCRUMB -->
+				<ul class="breadcrumb push-down-0">
+					<li><a href="pages-timeline-simple.html">Home</a></li>
+					<li class="active">Schedule</li>
+				</ul>
+				<!-- END BREADCRUMB -->                                                
+				
+				<!-- START CONTENT FRAME -->
+				<div class="content-frame">            
+					<!-- START CONTENT FRAME TOP -->
+					<div class="content-frame-top">                        
+						<div class="page-title">                    
+							<h2><span class="fa fa-calendar"></span> Job Schedule</h2>
+						</div>  
+						<div class="pull-right">
+							<button class="btn btn-default content-frame-left-toggle"><span class="fa fa-bars"></span></button>
+						</div>                                                                                
+					</div>
+					<!-- END CONTENT FRAME TOP -->
+					
+					<!-- START CONTENT FRAME LEFT -->
+					<div class="content-frame-left">
+						<!-- <h4>New Event</h4>
+						<div class="form-group">
+							<div class="input-group">
+								<input type="text" class="form-control" id="new-event-text" placeholder="Event text..."/>
+								<div class="input-group-btn">
+									<button class="btn btn-primary" id="new-event">Add</button>
+								</div>
+							</div>
+						</div> -->
+						
+						<h4>This Week Duty Buildings</h4>
+						<div class="list-group border-bottom" id="external-events" ng-init="get_guard_building_list()"> 
+							<div ng-repeat="obj in building_list_object">                                   
+								<a class="list-group-item external-event">{{obj.building_name}}</a>
+							</div>
+						</div>                            
+						
+						<!-- <div class="push-up-10">
+							<label class="check">
+								<input type="checkbox" class="icheckbox" id="drop-remove"/> Remove after drop
+							</label>
+						</div>  -->    
+						
+						
+					</div>
+					<!-- END CONTENT FRAME LEFT -->
+					
+					<!-- START CONTENT FRAME BODY -->
+					<div class="content-frame-body padding-bottom-1">
+						<!-- PAGE CONTENT WRAPPER -->
+				<div class="page-content-wrap">
+				
+					<div class="row">
+						<div class="col-md-12">
+							
+							<form class="form-horizontal">
+															
+								<div class="panel panel-default tabs">                            
+									<ul class="nav nav-tabs" role="tablist">
+										<!-- <li class={{tab1_status}}><a href="#tab-first" role="tab" data-toggle="tab" ng-click="getTabActiveStatus('tab1')">Last Month Schedule</a></li>
+										<li class={{tab2_status}}><a href="#tab-second" role="tab" data-toggle="tab" ng-click="getTabActiveStatus('tab2')">This Month Schedule</a></li>
+										<li class={{tab3_status}}><a href="#tab-third" role="tab" data-toggle="tab" ng-click="getTabActiveStatus('tab3')">Next Month Schedule</a></li> -->
+										
+										<li ><a href="#tab-first" role="tab" data-toggle="tab">Last Month Schedule</a></li>
+										<li ><a href="#tab-second" role="tab" data-toggle="tab">This Month Schedule</a></li>
+										<li ><a href="#tab-third" role="tab" data-toggle="tab">Next Month Schedule</a></li>
+									</ul>
+									<div class="panel-body tab-content">
+									<!-- TAB 1 -->
+										<div class="tab-pane active" id="tab-first" ng-init="getTab1Data()">
+											<div class="panel-heading">
+												<h3 class="panel-title">{{month_tab1}}</h3>
+											</div>
+											<div class="panel-body">
+												
+												<table class="table table-bordered">
+													<thead>
+														<tr>
+															<th>Date</th>
+															<th>Client Name</th>
+															<th>Building</th>
+															<th>Address</th>
+															<th>Shift</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr class="active" ng-repeat="obj  in tab1_data_object">
+															<td>{{obj.date}}</td>
+															<td>{{obj.client_name}}</td>
+															<td>{{obj.building_name}}</td>
+															<td>{{obj.building_address}}</td>
+															<td>{{obj.shift}}</td>
+														</tr>
+													</tbody>
+												</table>                                
+											</div>
+											
+										</div>
+										<!-- -END TAB 1-->
+										
+										<!-- START TAB 2-->
+										<div class="tab-pane" id="tab-second"  ng-init="getTab2Data()">
+											<div class="panel-heading">
+												<h3 class="panel-title">{{month_tab2}}</h3>
+											</div>
+											<div class="panel-body">
+												
+												<table class="table table-bordered">
+													<thead>
+														<tr>
+															<th>Date</th>
+															<th>Client Name</th>
+															<th>Building</th>
+															<th>Address</th>
+															<th>Shift</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr class="active" ng-repeat="obj  in tab2_data_object">
+															<td>{{obj.date}}</td>
+															<td>{{obj.client_name}}</td>
+															<td>{{obj.building_name}}</td>
+															<td>{{obj.building_address}}</td>
+															<td>{{obj.shift}}</td>
+														</tr>
+													</tbody>
+												</table>                                
+											</div>
+
+										</div>  
+										<!-- END TAB 2-->
+										<!-- START TAB 3-->
+										<div class="tab-pane" id="tab-third"  ng-init="getTab3Data()">
+											<div class="panel-heading">
+												<h3 class="panel-title">{{month_tab3}}</h3>
+											</div>
+											<div class="panel-body">
+												
+												<table class="table table-bordered">
+													<thead>
+														<tr>
+															<th>Date</th>
+															<th>Client Name</th>
+															<th>Building</th>
+															<th>Address</th>
+															<th>Shift</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr class="active" ng-repeat="obj  in tab3_data_object">
+															<td>{{obj.date}}</td>
+															<td>{{obj.client_name}}</td>
+															<td>{{obj.building_name}}</td>
+															<td>{{obj.building_address}}</td>
+															<td>{{obj.shift}}</td>
+														</tr>
+													</tbody>
+												</table>                                
+											</div>
+										</div>
+										<!-- END TAB 3-->
+									</div>
+									
+								</div>                                
+							
+							</form>
+							
+						</div>
+					</div>                    
+					
+				</div>
+				<!-- END PAGE CONTENT WRAPPER --> 
+						
+					</div>                   
+					<!-- END CONTENT FRAME BODY -->
+					
+					
+				</div>               
+				<!-- END CONTENT FRAME -->    

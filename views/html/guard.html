@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+		<html lang="en">
+			<head>        
+				<!-- META SECTION -->
+				<title>Workforce Management System</title>            
+				<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+				<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+				<meta name="viewport" content="width=device-width, initial-scale=1" />
+				
+<!-- 				<link rel="icon" href="favicon.ico" type="image/x-icon" /> -->
+				<!-- END META SECTION -->
+				
+				<!-- CSS INCLUDE -->        
+				<link rel="stylesheet" type="text/css" id="theme" href="../views/stylesheets/css/theme-default.css"/>
+				<!-- EOF CSS INCLUDE -->
+	
+				<!-- INCLUDE ANGULAR CDN-->
+					<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.16/angular.js"></script>
+					<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.16/angular-route.js"></script>
+					<script type='text/javascript' src="../../node_modules/joli/js/plugins/jquery-validation/jquery.validate.js"></script>
+					<!-- Controller js -->
+					<script src="../../controllers/angular_controller/js/routes.js" ></script> 
+					<script src="../../controllers/angular_controller/js/guard_home_controller.js" ></script>
+					<script src="../../controllers/angular_controller/js/guard_schedule_controller.js" ></script> 
+					<script src="../../controllers/angular_controller/js/guard_checkIn_controller.js" ></script>
+					<!-- START PLUGINS -->
+					<script type="text/javascript" src="../../controllers/angular_controller/js/plugins/jquery/jquery.min.js"></script>
+					<script type="text/javascript" src="../../controllers/angular_controller/js/plugins/jquery/jquery-ui.min.js"></script>
+					<script type="text/javascript" src="../../controllers/angular_controller/js/plugins/bootstrap/bootstrap.min.js"></script>        
+					<!-- END PLUGINS -->
+		
+					<!-- START THIS PAGE PLUGINS-->        
+					<script type='text/javascript' src="../../controllers/angular_controller/js/plugins/icheck/icheck.min.js"></script>
+					<script type="text/javascript" src="../../controllers/angular_controller/js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js"></script>
+					
+					<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>        
+					<script type="text/javascript" src="../../controllers/angular_controller/js/plugins/blueimp/jquery.blueimp-gallery.min.js"></script>
+					<script type="text/javascript" src="../../controllers/angular_controller/js/plugins/bootstrap/bootstrap-datepicker.js"></script>
+					<script type="text/javascript" src="../../controllers/angular_controller/js/plugins/bootstrap/bootstrap-timepicker.min.js"></script>
+					
+					<script type="text/javascript" src="../../controllers/angular_controller/js/plugins/bootstrap/bootstrap-file-input.js"></script>
+					<script type="text/javascript" src="../../controllers/angular_controller/js/plugins/bootstrap/bootstrap-select.js"></script>
+					<script type="text/javascript" src="../../controllers/angular_controller/js/plugins/tagsinput/jquery.tagsinput.min.js"></script>
+					<script type='text/javascript' src="../../controllers/angular_controller/js/plugins/validationengine/languages/jquery.validationEngine-en.js"></script>
+			        <script type='text/javascript' src="../../controllers/angular_controller/js/plugins/validationengine/jquery.validationEngine.js"></script>        
+			        <script type='text/javascript' src="../../controllers/angular_controller/js/plugins/jquery-validation/jquery.validate.js"></script>                
+			        <script type='text/javascript' src="../../controllers/angular_controller/js/plugins/maskedinput/jquery.maskedinput.min.js"></script>				
+					<!-- END THIS PAGE PLUGINS-->        
+						<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.6.0/ui-bootstrap-tpls.min.js"></script>
+					<!-- END of ANGULAR CDN-->
+				
+			</head>
+			<body ng-app="workforce_guard_module_angular_app">
+    		
+        	<!-- START PAGE CONTAINER -->
+        		<div class="page-container">
+            
+            <!-- START PAGE SIDEBAR -->
+            <div class="page-sidebar" ng-controller="ProfileNameController">
+                <!-- START X-NAVIGATION -->
+                <ul class="x-navigation">
+                    <li class="xn-logo">
+                        <a><h6>Workforce Management System</h6></a>
+								<a href="#" class="x-navigation-control"></a>
+							</li>
+							<li class="xn-profile">
+								<a href="#" class="profile-mini">
+									<img src="../views/images/images-2.jpg" alt={{personInfo}}/>
+								</a>
+								<div class="profile">
+									<div class="profile-image">
+										<img src="../views/images/images-2.jpg" alt={{personInfo}}/>
+									</div>
+									<div class="profile-data">
+															<!-- Guard Name -->
+										<div class="profile-data-name">{{personInfo}}</div>
+										<div class="profile-data-title">Guard</div>
+									</div>
+									
+								</div>                                                                        
+							</li>
+							<li class="xn-title">Navigation</li>
+							  
+							<li class="fa fa-files-o active"><a href="#guard_home"><span class="fa fa-user"></span> Home </a></li>  
+							<li class="fa fa-files-o"><a href="#guard_schedule"><span class="fa fa-calendar"></span> Schedule </a></li>
+							<li class="fa fa-files-o"><a href="#guard_checkIn"><span class="fa fa-align-justify"></span> Check In</a></li>
+														
+					  </ul>
+							
+						<!-- END X-NAVIGATION -->
+					</div>
+					<!-- END PAGE SIDEBAR -->
+					
+					<!-- PAGE CONTENT -->
+					<div class="page-content">
+						
+						<!-- START X-NAVIGATION VERTICAL -->
+						<ul class="x-navigation x-navigation-horizontal x-navigation-panel">
+							<!-- TOGGLE NAVIGATION -->
+							<li class="xn-icon-button">
+								<a href="#" class="x-navigation-minimize"><span class="fa fa-dedent"></span></a>
+							</li>
+							<!-- END TOGGLE NAVIGATION -->
+							<!-- SEARCH -->
+							<li class="xn-search">
+								<form role="form">
+									<input type="text" name="search" placeholder="Search..."/>
+								</form>
+							</li>   
+							<!-- END SEARCH -->
+							<!-- SIGN OUT -->
+							<li class="xn-icon-button pull-right">
+								<a href="#" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span></a>                        
+							</li> 
+							<!-- END SIGN OUT -->
+							
+							
+						</ul>
+						<!-- END X-NAVIGATION VERTICAL -->                    
+					<!--  ANGULAR DIV -->
+					<div ng-app="workforce_guard_module_angular_app"> <!-- Utkarsh Saxena April 19,2015 - define angular app -->                                      
+						<!-- PAGE CONTENT WRAPPER -->
+						<div class="page-content-wrap">
+						    <script type="text/ng-template" id="guard_home.html"></script>
+					    	<script type="text/ng-template" id="guard_schedule.html"></script>
+							<script type="text/ng-template" id="guard_checkIn.html"></script>
+						
+						<!-- NG VIEW-->
+							<div ng-view></div>
+						</div>
+						<!-- END PAGE CONTENT WRAPPER -->                       
+					</div>
+					<!-- ANGULAR DIV END -->				
+							  
+						<!-- END PAGE CONTENT -->
+					
+				</div>  
+				 <!-- END of home html -->
+				</div>
+				<!-- END PAGE CONTAINER -->
+	      
+				
+				<!-- LOGOUT MESSAGE BOX-->
+				<div class="message-box animated fadeIn" data-sound="alert"  id="mb-signout">
+					<div class="mb-container">
+						<div class="mb-middle">
+							<div class="mb-title"><span class="fa fa-sign-out"></span> Log <strong>Out</strong> ?</div>
+							<div class="mb-content">
+								<p>Are you sure you want to log out?</p>                    
+								<p>Press No if youwant to continue work. Press Yes to logout current user.</p>
+							</div>
+							<div class="mb-footer">
+								<div class="pull-right">
+<!-- 									<a href="login.html" class="btn btn-success btn-lg">Yes</a> -->
+									<button class="btn btn-success btn-lg mb-control-close" ng-controller="logoutController" ng-click="logout()">Yes</button>
+									<button class="btn btn-default btn-lg mb-control-close" >No</button>
+									
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- END  LOGOUT MESSAGE BOX-->
+				
+				 <!-- ALERT MESSAGE BOX  -->
+				<!-- <div class="message-box animated fadeIn" data-sound="alert" id="mb-alert">
+					<div class="mb-container">
+						<div class="mb-middle">
+							<div class="mb-title"><span class="fa fa-exclamation-triangle"></span> Create<strong>Alert</strong> ?</div>
+							<div class="mb-content">
+								<p>Are you sure you want to create this alter?</p>                    
+								<p>Press No if you don't want to. Press Yes to continue.</p>
+							</div>
+							<div class="mb-footer">
+								<div class="pull-right">
+							
+									<a href="pages-timeline-simple.html" class="btn btn-success btn-lg">Yes</a>
+									<button class="btn btn-default btn-lg mb-control-close">No</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div> -->
+				<!-- END ALERT MESSAGE BOX-->
+				
+				
+	
+				<!-- START PRELOADS -->
+				<audio id="audio-alert" src="../audio/alert.mp3" preload="auto"></audio>
+				<audio id="audio-fail" src="../audio/fail.mp3" preload="auto"></audio>
+				<!-- END PRELOADS -->          
+				
+			<!-- START SCRIPTS -->
+				
+	
+				<!-- START TEMPLATE -->
+				
+				
+				<script type="text/javascript" src="../../controllers/angular_controller/js/plugins.js"></script>        
+				<script type="text/javascript" src="../../controllers/angular_controller/js/actions.js"></script>
+				<script type="text/javascript" src="../../controllers/angular_controller/js/demo_maps.js"></script>
+				<!-- END TEMPLATE -->
+				
+				<script>            
+					document.getElementById('links').onclick = function (event) {
+									event = event || window.event;
+									var target = event.target || event.srcElement,
+										link = target.src ? target.parentNode : target,
+										options = {index: link, event: event,onclosed: function(){
+											setTimeout(function(){
+												$("body").css("overflow","");
+											},200);                        
+										}},
+										links = this.getElementsByTagName('a');
+									blueimp.Gallery(links, options);
+								};
+				</script> 
+				
+				
+			<!-- END SCRIPTS -->         
+			</body>
+		</html>

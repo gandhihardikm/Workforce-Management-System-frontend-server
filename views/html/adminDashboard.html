@@ -1,0 +1,202 @@
+ <!-- START WIDGETS -->                    
+                    <div class="row">
+                  	   <div class="col-md-3">
+                  	                              
+                           <!-- START WIDGET MESSAGES -->
+                            <div class="widget widget-default widget-item-icon" onclick="location.href='pages-messages.html';">
+                                <div class="widget-item-left">
+                                    <span class="fa fa-building-o"></span>
+                                </div>                             
+                                <div class="widget-data">
+                                    <div class="widget-int num-count" id="number_of_buildings" > </div>
+                                    <div class="widget-title">Total number of buildings</div>
+                                    
+                                </div>      
+                            
+                            </div>                            
+                            <!-- END WIDGET MESSAGES -->
+                            
+                         </div>		 
+                 
+                
+                 
+                        <div class="col-md-3">
+                            
+                            <!-- START WIDGET MESSAGES -->
+                            <div class="widget widget-default widget-item-icon" onclick="location.href='pages-messages.html';">
+                                <div class="widget-item-left">
+                                    <span class="fa fa-exclamation-triangle"></span>
+                                </div>                             
+                                <div class="widget-data">
+                                    <div class="widget-int num-count" id="numberOfAlert"></div>
+                                    <div class="widget-title">Total alerts</div>
+                                    <div class="widget-subtitle">generated in system </div>
+                                </div>      
+                               
+                            </div>                            
+                            <!-- END WIDGET MESSAGES -->
+                            
+                        </div>
+                        <div class="col-md-3">
+                            
+                            <!-- START WIDGET REGISTRED -->
+                            <div class="widget widget-default widget-item-icon" onclick="location.href='pages-address-book.html';">
+                                <div class="widget-item-left">
+                                    <span class="fa fa-user"></span>
+                                </div>
+                                <div class="widget-data">
+                                    <div class="widget-int num-count" id="numberOfClient"></div>
+                                    <div class="widget-title">Registred clients</div>
+                                    <div class="widget-subtitle">On your system</div>
+                                </div>
+                                                           
+                            </div>                            
+                            <!-- END WIDGET REGISTRED -->
+                            
+                        </div>
+                        <div class="col-md-3">
+                            
+                            <!-- START WIDGET CLOCK -->
+                            <div class="widget widget-info widget-padding-sm">
+                                <div class="widget-big-int plugin-clock">00:00</div>                            
+                                <div class="widget-subtitle plugin-date"></div> 
+                                                            
+                                <div class="widget-buttons widget-c3">
+                                    <span class="fa fa-clock-o" style="font-size: 45px;"></span>
+                                </div>                            
+                            </div>                        
+                            <!-- END WIDGET CLOCK -->
+                            
+                        </div>
+                    </div>
+                    <!-- END WIDGETS -->                    
+                    
+                    <div class="row">
+                    <div class="col-md-3">
+                            
+                            <!-- START WIDGET MESSAGES -->
+                            <div class="widget widget-default widget-item-icon">
+                                <div class="widget-item-left">
+                                    <i class="fa fa-money"></i>
+                                </div>                             
+                                <div class="widget-data">
+                                    
+                                    <div class="widget-int num-count" id="totalRevenue"></div>
+                                    <div class="widget-title"  >Total Sales</div>
+                                </div>      
+                               
+                            </div>                            
+                            <!-- END WIDGET MESSAGES -->
+                            
+                        </div>
+                        
+                        <div class="col-md-3">
+                            
+                            <!-- START WIDGET MESSAGES -->
+                            <div class="widget widget-default widget-item-icon">
+                                <div class="widget-item-left">
+                                   <span class="fa fa-dollar"></span>
+                                </div>                             
+                                <div class="widget-data">
+                                    
+                                    <div class="widget-title" id="totalNumberOfPendingClients"></div>
+                                    <div class="widget-title">Number of Clients pending to pay bill</div>
+                                </div>      
+                               
+                            </div>                            
+                            <!-- END WIDGET MESSAGES -->
+                            
+                        </div>
+                        
+
+						<div class="col-md-4">
+                            
+                            <!-- START PROJECTS BLOCK -->
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <div class="panel-title-box">
+                                        <h3>Projects</h3>
+                                        <span>Projects activity</span>
+                                    </div>                                    
+                                    <ul class="panel-controls" style="margin-top: 2px;">
+                                        <li><a href="#" class="panel-fullscreen"><span class="fa fa-expand"></span></a></li>
+                                        <li><a href="#" class="panel-refresh"><span class="fa fa-refresh"></span></a></li>
+                                        <li class="dropdown">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="fa fa-cog"></span></a>                                        
+                                            <ul class="dropdown-menu">
+                                                <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span> Collapse</a></li>
+                                                <li><a href="#" class="panel-remove"><span class="fa fa-times"></span> Remove</a></li>
+                                            </ul>                                        
+                                        </li>                                        
+                                    </ul>
+                                </div>
+                                
+                                
+                                <div class="panel-body panel-body-table">
+                                    
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th width="70%">Guard</th>
+                                                    <th width="30%">Location</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr ng-repeat="guard in guards">
+                                                <td>{{guard.first_name}} {{guard.last_name}}</td>
+                                                <td>
+												<ul class="panel-controls">
+ 										 				<li><a href="javascript:void();" ng-click="viewGuardLocation(this)" class="panel-edit" data-toggle="modal" data-target="#divViewGuardLocation" ><span class="fa fa-map-marker"></span></a></li>                                     				</ul> 
+												</td>
+                                            </tr>
+                                        </tbody>
+                                        </table>
+                                    </div>
+                                    
+                                </div>
+                                
+                                
+                                
+                                
+                                
+                            </div>
+                            <!-- END PROJECTS BLOCK -->
+                            
+                        </div>
+                    </div>
+                    
+                    
+                    <!-- START DASHBOARD CHART -->
+					<div class="chart-holder" id="dashboard-area-1" style="height: 200px;"></div>
+					<div class="block-full-width">
+                                                                       
+                    </div>                    
+                    <!-- END DASHBOARD CHART -->
+                    
+                </div>
+                <!-- END PAGE CONTENT WRAPPER -->                                
+            </div>            
+            <!-- END PAGE CONTENT -->
+        </div>
+        <!-- END PAGE CONTAINER -->
+        
+        
+        <!-- VIEW GUARD LOCATION MODAL DIALOG START-->
+					<div class="modal fade" id="divViewGuardLocation" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		  <div class="modal-dialog" style="width:75%">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title" id="myModalLabel">Guard</h4>
+		      </div>
+		      <div class="modal-body" style="height: auto;overflow: auto;">
+		       
+		        <div class="panel-body panel-body-map">
+                        <div id="map-canvas" style="  width: 100%;height: 300px; position: relative; overflow: hidden;  transform: translateZ(0px);  background-color: rgb(229, 227, 223);"></div>
+                 </div>
+			  </div>
+		     
+		    </div>
+		  </div>
+		</div>

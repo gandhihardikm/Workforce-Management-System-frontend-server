@@ -1,2 +1,25 @@
-# Workforce-Management-System-frontend-server
-CMPE 273 (Enterprise Distributed System) FINAL Project using nodejs, angularjs, boostrap, jquery, mysql
+
+
+# Workforce Management System Frontend Node Server
+
+
+
+## Usage
+
+Clone from repository
+Open in Eclipse
+Resolve dependencies if any
+
+## Developing
+
+AngularJS for controller
+Bootstrap, Material for UI
+Node as Backend
+
+### Tools
+
+Created with [Nodeclipse](https://github.com/Nodeclipse/nodeclipse-1)
+ ([Eclipse Marketplace](http://marketplace.eclipse.org/content/nodeclipse), [site](http://www.nodeclipse.org))   
+
+Nodeclipse is free open-source project that grows with your contributions.
+#
